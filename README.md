@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌱 GreenGrow: Journey of the Green Seed
 
 **A web-based educational game about environmental sustainability and SDGs**
@@ -162,3 +163,6 @@ For questions or feedback, please reach out through the repository issues or con
 ---
 
 **Made with 💚 for a sustainable future**
+=======
+# SGS_ARIES_for_u_Game_Project_Hackathon
+>>>>>>> 1a465a241dc363f605e6ecc5118b8f3aac10b10b
