@@ -6,45 +6,12 @@
     <meta name="description" content="GreenGrow Environmental Quiz">
     <meta name="author" content="SGS Aries for U Team">
     <title>GreenGrow - Quiz Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <!-- Header -->
-    <header class="game-header">
-        <div class="header-left">
-            <a href="menu.html" class="btn btn-icon" aria-label="Back to Menu">🏠</a>
-            <h2>Environmental Quiz</h2>
-        </div>
-        <div class="header-right">
-            <div class="points-display">
-                <span class="points-icon">💧</span>
-                <span id="pointsValue">0</span>
-                <span class="points-label">Green Points</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- Tree Visualization Area (Compact) -->
-    <div class="tree-section tree-section-compact">
-        <div class="tree-container">
-            <div id="treeStage" class="tree-stage stage-1" aria-label="Tree growth stage">
-                <div class="tree-visual">
-                    <div class="seed">🌰</div>
-                    <div class="sprout">🌱</div>
-                    <div class="sapling">🌿</div>
-                    <div class="young-tree">🌳</div>
-                    <div class="blossom-tree">🌸🌳🌸</div>
-                </div>
-            </div>
-            <div class="tree-info">
-                <p id="treeStageText" class="tree-stage-text">Seed Stage</p>
-                <div class="progress-bar">
-                    <div id="progressFill" class="progress-fill" style="width: 0%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+<body class="quiz-page">
     <!-- Quiz Game Screen -->
     <div class="quiz-screen">
         <div class="quiz-content">
@@ -75,12 +42,17 @@
 
     <!-- Scripts -->
     <script src="js/common.js"></script>
+    <script src="js/sound_manager.js"></script>
     <script src="js/quiz_game.js"></script>
     <script>
         // Auto-start quiz when page loads
         document.addEventListener('DOMContentLoaded', () => {
             if (window.QuizGame) {
                 window.QuizGame.start();
+            }
+            // Start background music
+            if (window.soundManager) {
+                soundManager.playMusic('musicGameplay');
             }
         });
     </script>

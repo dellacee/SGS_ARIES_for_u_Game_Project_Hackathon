@@ -7,20 +7,40 @@
     <meta name="keywords" content="environmental education, sustainability, SDG, recycling game, educational game">
     <meta name="author" content="SGS Aries for U Team">
     <title>GreenGrow: Journey of the Green Seed - Welcome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="welcome-page">
     <!-- Welcome Screen -->
     <div class="welcome-screen">
         <div class="welcome-content">
             <h1 class="game-title">🌱 GreenGrow</h1>
             <p class="game-subtitle">Journey of the Green Seed</p>
-            <p class="game-description">Grow your tree by learning about the environment and sorting waste correctly!</p>
-            <a href="menu.html" class="btn btn-primary btn-large">Start Your Journey</a>
+            <div class="hero-message">
+                <p class="hero-text">🌍 <strong>Our Planet Needs YOU!</strong></p>
+                <p class="game-description">
+                    Earth is running out of green spaces. As an Eco-Hero, your mission is to 
+                    <span class="highlight">restore life</span> by growing trees and 
+                    <span class="highlight">saving the environment</span> through knowledge and action!
+                </p>
+                <p class="challenge-text">💡 Solve puzzles • ♻️ Sort waste • 🌳 Grow your forest!</p>
+            </div>
+            <a href="menu.html" class="btn btn-primary btn-large">🚀 Begin Your Mission</a>
         </div>
     </div>
 
     <!-- Scripts -->
     <script src="js/common.js"></script>
+    <script src="js/sound_manager.js"></script>
+    <script>
+        // Start menu music on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.soundManager) {
+                soundManager.playMusic('musicMenu');
+            }
+        });
+    </script>
 </body>
 </html>

@@ -6,13 +6,16 @@
     <meta name="description" content="GreenGrow Game Results">
     <meta name="author" content="SGS Aries for U Team">
     <title>GreenGrow - Results</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="results-page">
     <!-- Header -->
     <header class="game-header">
         <div class="header-left">
-            <a href="menu.html" class="btn btn-icon" aria-label="Back to Menu">🏠</a>
+            <a href="menu.html" class="btn btn-small btn-home">Menu</a>
             <h2 id="resultsHeaderTitle">Game Results</h2>
         </div>
         <div class="header-right">
@@ -29,11 +32,11 @@
         <div class="tree-container">
             <div id="treeStage" class="tree-stage stage-1" aria-label="Tree growth stage">
                 <div class="tree-visual">
-                    <div class="seed">🌰</div>
-                    <div class="sprout">🌱</div>
-                    <div class="sapling">🌿</div>
-                    <div class="young-tree">🌳</div>
-                    <div class="blossom-tree">🌸🌳🌸</div>
+                    <div class="seed"></div>
+                    <div class="sprout"></div>
+                    <div class="sapling"></div>
+                    <div class="young-tree"></div>
+                    <div class="blossom-tree"></div>
                 </div>
             </div>
             <div class="tree-info">
@@ -49,23 +52,31 @@
     <!-- Results Screen -->
     <div class="results-screen">
         <div class="results-content">
-            <h2 id="resultsTitle">Game Complete!</h2>
+            <h2 id="resultsTitle">🎮 GAME RESULTS!</h2>
             <div class="results-stats">
                 <p id="resultsMessage" class="results-message"></p>
                 <div class="results-details">
                     <div class="result-item">
-                        <span class="result-label">Points Earned:</span>
-                        <span id="pointsEarned" class="result-value">0</span>
+                        <span class="result-label">Score:</span>
+                        <span id="gameScore" class="result-value">0</span>
                     </div>
                     <div class="result-item">
-                        <span class="result-label">Total Points:</span>
-                        <span id="totalPoints" class="result-value">0</span>
+                        <span class="result-label">Correct:</span>
+                        <span id="correctCount" class="result-value">0</span>
                     </div>
+                    <div class="result-item">
+                        <span class="result-label">Wrong:</span>
+                        <span id="wrongCount" class="result-value">0</span>
+                    </div>
+                </div>
+                <div id="knowledgeSection" class="knowledge-section">
+                    <h3>💡 KNOWLEDGE</h3>
+                    <p id="knowledgeText" class="knowledge-text"></p>
                 </div>
             </div>
             <div class="results-actions">
-                <button id="playAgainBtn" class="btn btn-primary">Play Again</button>
-                <a href="menu.html" class="btn btn-secondary">Back to Menu</a>
+                <button id="playAgainBtn" class="btn btn-primary btn-large">🔄 Play Again</button>
+                <a href="menu.html" class="btn btn-secondary btn-large">🏠 Menu</a>
             </div>
         </div>
     </div>
@@ -77,62 +88,89 @@
 
     <!-- Scripts -->
     <script src="js/common.js"></script>
+    <script src="js/sound_manager.js"></script>
     <script>
-        // Get results from URL parameters or sessionStorage
+        // Get results from sessionStorage
         document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const gameType = urlParams.get('type') || sessionStorage.getItem('gameType');
-            const pointsEarned = parseInt(urlParams.get('points') || sessionStorage.getItem('pointsEarned') || '0');
-            const score = parseInt(urlParams.get('score') || sessionStorage.getItem('score') || '0');
-            const total = parseInt(urlParams.get('total') || sessionStorage.getItem('total') || '0');
-            const correct = parseInt(urlParams.get('correct') || sessionStorage.getItem('correct') || '0');
-            const wrong = parseInt(urlParams.get('wrong') || sessionStorage.getItem('wrong') || '0');
-            
-            // Update results display
-            const resultsTitle = document.getElementById('resultsTitle');
-            const resultsHeaderTitle = document.getElementById('resultsHeaderTitle');
-            const resultsMessage = document.getElementById('resultsMessage');
-            const pointsEarnedEl = document.getElementById('pointsEarned');
-            const totalPointsEl = document.getElementById('totalPoints');
-            const playAgainBtn = document.getElementById('playAgainBtn');
-            
-            if (gameType === 'quiz') {
-                if (resultsTitle) resultsTitle.textContent = '📚 Quiz Complete!';
-                if (resultsHeaderTitle) resultsHeaderTitle.textContent = 'Quiz Results';
-                if (resultsMessage && score && total) {
-                    resultsMessage.textContent = `You answered ${score} out of ${total} questions correctly!`;
-                }
-                if (playAgainBtn) {
-                    playAgainBtn.onclick = () => window.location.href = 'quiz.html';
-                }
-            } else if (gameType === 'sorting') {
-                if (resultsTitle) resultsTitle.textContent = '♻️ Sorting Complete!';
-                if (resultsHeaderTitle) resultsHeaderTitle.textContent = 'Sorting Results';
-                if (resultsMessage && correct !== undefined) {
-                    resultsMessage.textContent = `You sorted ${correct} items correctly and ${wrong} incorrectly!`;
-                }
-                if (playAgainBtn) {
-                    playAgainBtn.onclick = () => window.location.href = 'sorting.html';
-                }
+            // Play victory music
+            if (window.soundManager) {
+                soundManager.playMusic('musicVictory');
             }
             
-            if (pointsEarnedEl) {
-                pointsEarnedEl.textContent = pointsEarned > 0 ? '+' + pointsEarned : pointsEarned;
-            }
+            // Try to get sorting game results
+            const sortingResults = sessionStorage.getItem('sortingGameResults');
             
-            // Total points from common.js GameState
-            if (totalPointsEl && window.GameState) {
-                totalPointsEl.textContent = window.GameState.greenPoints;
+            if (sortingResults) {
+                const results = JSON.parse(sortingResults);
+                handleSortingResults(results);
+            } else {
+                // Fallback to URL parameters for quiz
+                const urlParams = new URLSearchParams(window.location.search);
+                const gameType = urlParams.get('type') || sessionStorage.getItem('gameType');
+                const pointsEarned = parseInt(urlParams.get('points') || sessionStorage.getItem('pointsEarned') || '0');
+                const score = parseInt(urlParams.get('score') || sessionStorage.getItem('score') || '0');
+                const total = parseInt(urlParams.get('total') || sessionStorage.getItem('total') || '0');
+                
+                if (gameType === 'quiz') {
+                    handleQuizResults({ pointsEarned, score, total });
+                }
             }
             
             // Clear session storage
+            sessionStorage.removeItem('sortingGameResults');
             sessionStorage.removeItem('gameType');
             sessionStorage.removeItem('pointsEarned');
-            sessionStorage.removeItem('score');
-            sessionStorage.removeItem('total');
-            sessionStorage.removeItem('correct');
-            sessionStorage.removeItem('wrong');
         });
+        
+        function handleSortingResults(results) {
+            const { score, correctCount, wrongCount, passed, targetBin, knowledge, passScore } = results;
+            
+            // Update title
+            const resultsTitle = document.getElementById('resultsTitle');
+            if (passed) {
+                resultsTitle.textContent = '🎉 EXCELLENT!';
+                resultsTitle.style.color = '#4CAF50';
+            } else {
+                resultsTitle.textContent = '💪 KEEP TRYING!';
+                resultsTitle.style.color = '#FF9800';
+            }
+            
+            // Update message
+            const resultsMessage = document.getElementById('resultsMessage');
+            if (passed) {
+                resultsMessage.textContent = `You scored ${score}/${passScore} points! Excellent!`;
+                resultsMessage.style.color = '#4CAF50';
+            } else {
+                resultsMessage.textContent = `You scored ${score}/${passScore} points. Try again!`;
+                resultsMessage.style.color = '#FF9800';
+            }
+            
+            // Update stats
+            document.getElementById('gameScore').textContent = score;
+            document.getElementById('correctCount').textContent = correctCount;
+            document.getElementById('wrongCount').textContent = wrongCount;
+            
+            // Update knowledge
+            document.getElementById('knowledgeText').textContent = knowledge;
+            
+            // Play again button
+            const playAgainBtn = document.getElementById('playAgainBtn');
+            playAgainBtn.onclick = () => window.location.href = 'sorting.html';
+        }
+        
+        function handleQuizResults(results) {
+            const { pointsEarned, score, total } = results;
+            
+            document.getElementById('resultsTitle').textContent = '📚 Quiz Complete!';
+            document.getElementById('resultsMessage').textContent = `You answered ${score} out of ${total} questions correctly!`;
+            document.getElementById('gameScore').textContent = score;
+            
+            // Hide knowledge section for quiz
+            document.getElementById('knowledgeSection').style.display = 'none';
+            
+            const playAgainBtn = document.getElementById('playAgainBtn');
+            playAgainBtn.onclick = () => window.location.href = 'quiz.html';
+        }
     </script>
 </body>
 </html>

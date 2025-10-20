@@ -256,9 +256,17 @@ const QuizGame = (() => {
         
         if (!isCorrect) {
             elements.answerButtons[answerIndex].classList.add('incorrect');
+            // Play wrong answer sound
+            if (window.soundManager) {
+                soundManager.play('wrongAnswer');
+            }
         } else {
             score++;
             window.GameController.addPoints(POINTS_PER_CORRECT);
+            // Play correct answer sound
+            if (window.soundManager) {
+                soundManager.play('correctAnswer');
+            }
         }
         
         // Show feedback
@@ -298,6 +306,12 @@ const QuizGame = (() => {
      */
     function endQuiz() {
         const pointsEarned = score * POINTS_PER_CORRECT;
+        
+        // Play quiz complete sound
+        if (window.soundManager) {
+            soundManager.play('quizComplete');
+            soundManager.stopMusic();
+        }
         
         if (window.GameController && window.GameController.showResults) {
             window.GameController.showResults('quiz', pointsEarned, {
