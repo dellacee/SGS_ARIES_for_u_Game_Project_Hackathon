@@ -1,73 +1,85 @@
 /**
- * GreenGrow: Trash Sorting Game Module
- * Catch falling trash items with correct color-coded bins
+ * GreenGrow: Trash Sorting Game Module - REDESIGNED
+ * Pixel Art Style Drag & Drop Game
  */
 
 const TrashSortingGame = (() => {
     // Game constants
-    const GAME_DURATION = 60; // seconds
-    const POINTS_CORRECT = 5;
-    const POINTS_WRONG = 3;
-    const ITEM_FALL_SPEED = 2;
-    const ITEM_SPAWN_INTERVAL = 2000; // milliseconds
-    const BIN_SPEED = 8;
+    const GAME_DURATION = 60;
+    const POINTS_CORRECT = 10;
+    const POINTS_WRONG = 5;
+    const PASS_SCORE = 50;
+    const TOTAL_ITEMS = 15;
+    const ITEM_FALL_SPEED = 1.5;
+    const ITEM_SPAWN_INTERVAL = 3000;
     
-    // Bin types with colors
+    // Bin types
     const BIN_TYPES = [
-        { name: 'Recyclable', color: '#4CAF50', emoji: '♻️' },   // Green
-        { name: 'Organic', color: '#8B4513', emoji: '🍂' },      // Brown
-        { name: 'Residual', color: '#757575', emoji: '🗑️' },     // Grey
-        { name: 'Hazardous', color: '#F44336', emoji: '☢️' }     // Red
+        { 
+            name: 'Rác Tái Chế',
+            color: '#4CAF50', 
+            emoji: '♻️',
+            knowledge: '♻️ Rác tái chế giúp tiết kiệm tài nguyên và bảo vệ môi trường!'
+        },
+        { 
+            name: 'Rác Hữu Cơ',
+            color: '#8B4513', 
+            emoji: '🍂',
+            knowledge: '🌱 Rác hữu cơ có thể làm phân compost để nuôi cây!'
+        },
+        { 
+            name: 'Rác Thông Thường',
+            color: '#757575', 
+            emoji: '🗑️',
+            knowledge: '🗑️ Rác thông thường khó phân hủy. Hãy giảm thiểu!'
+        },
+        { 
+            name: 'Rác Nguy Hại',
+            color: '#F44336', 
+            emoji: '☢️',
+            knowledge: '⚠️ Rác nguy hại rất độc hại! Phải xử lý đúng cách!'
+        }
     ];
     
-    // Trash items database
+    // Trash items
     const TRASH_ITEMS = [
-        // Recyclable (Green - index 0)
-        { name: 'Plastic Bottle', type: 0, emoji: '🍾' },
-        { name: 'Soda Can', type: 0, emoji: '🥫' },
-        { name: 'Paper', type: 0, emoji: '📄' },
-        { name: 'Cardboard', type: 0, emoji: '📦' },
-        { name: 'Glass Bottle', type: 0, emoji: '🍶' },
-        { name: 'Metal Can', type: 0, emoji: '🥫' },
+        // Recyclable (0)
+        { name: 'Chai Nhựa', type: 0, emoji: '🍾' },
+        { name: 'Lon Nước', type: 0, emoji: '🥫' },
+        { name: 'Giấy', type: 0, emoji: '📄' },
+        { name: 'Hộp Carton', type: 0, emoji: '📦' },
+        { name: 'Chai Thủy Tinh', type: 0, emoji: '🍶' },
         
-        // Organic (Brown - index 1)
-        { name: 'Apple Core', type: 1, emoji: '🍎' },
-        { name: 'Banana Peel', type: 1, emoji: '🍌' },
-        { name: 'Food Scraps', type: 1, emoji: '🥗' },
-        { name: 'Leaves', type: 1, emoji: '🍃' },
-        { name: 'Eggshells', type: 1, emoji: '🥚' },
-        { name: 'Coffee Grounds', type: 1, emoji: '☕' },
+        // Organic (1)
+        { name: 'Vỏ Táo', type: 1, emoji: '🍎' },
+        { name: 'Vỏ Chuối', type: 1, emoji: '🍌' },
+        { name: 'Thức Ăn Thừa', type: 1, emoji: '🥗' },
+        { name: 'Lá Cây', type: 1, emoji: '🍃' },
+        { name: 'Vỏ Trứng', type: 1, emoji: '🥚' },
         
-        // Residual (Grey - index 2)
-        { name: 'Broken Cup', type: 2, emoji: '☕' },
-        { name: 'Styrofoam', type: 2, emoji: '📦' },
-        { name: 'Diaper', type: 2, emoji: '🧷' },
-        { name: 'Candy Wrapper', type: 2, emoji: '🍬' },
-        { name: 'Chip Bag', type: 2, emoji: '🥔' },
+        // Residual (2)
+        { name: 'Cốc Vỡ', type: 2, emoji: '☕' },
+        { name: 'Xốp', type: 2, emoji: '📦' },
+        { name: 'Tã Giấy', type: 2, emoji: '🧷' },
+        { name: 'Bao Kẹo', type: 2, emoji: '🍬' },
+        { name: 'Túi Snack', type: 2, emoji: '🥔' },
         
-        // Hazardous (Red - index 3)
-        { name: 'Battery', type: 3, emoji: '🔋' },
-        { name: 'Light Bulb', type: 3, emoji: '💡' },
-        { name: 'Spray Can', type: 3, emoji: '💨' },
-        { name: 'Old Phone', type: 3, emoji: '📱' },
-        { name: 'Paint Can', type: 3, emoji: '🎨' }
+        // Hazardous (3)
+        { name: 'Pin', type: 3, emoji: '🔋' },
+        { name: 'Bóng Đèn', type: 3, emoji: '💡' },
+        { name: 'Bình Xịt', type: 3, emoji: '💨' },
+        { name: 'Điện Thoại Cũ', type: 3, emoji: '📱' },
+        { name: 'Hộp Sơn', type: 3, emoji: '🎨' }
     ];
     
     // Game state
     let canvas, ctx;
-    let gameLoop;
-    let spawnTimer;
-    let timeLeft;
-    let correctCount = 0;
-    let wrongCount = 0;
+    let gameLoop, spawnTimer;
+    let timeLeft, score, correctCount, wrongCount, itemsSpawned;
     let isPlaying = false;
-    let activeBinIndex = 0;
-    
-    // Game objects
+    let targetBinIndex = 0;
     let fallingItems = [];
     let bins = [];
-    
-    // DOM elements
     let elements = {};
     
     /**
@@ -76,42 +88,69 @@ const TrashSortingGame = (() => {
     class TrashItem {
         constructor(itemData) {
             this.data = itemData;
-            this.x = Math.random() * (canvas.width - 60) + 30;
-            this.y = -50;
-            this.width = 50;
-            this.height = 50;
+            this.x = Math.random() * (canvas.width - 100) + 50;
+            this.y = -80;
+            this.width = 60;
+            this.height = 60;
             this.speed = ITEM_FALL_SPEED;
             this.caught = false;
+            this.feedbackTimer = 0;
+            this.feedbackText = '';
+            this.feedbackColor = '';
         }
         
         update() {
-            this.y += this.speed;
+            if (!this.caught) {
+                this.y += this.speed;
+            }
+            if (this.feedbackTimer > 0) this.feedbackTimer--;
         }
         
         draw() {
-            // Draw emoji
-            ctx.font = '40px Arial';
+            ctx.save();
+            
+            // Border
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(this.x - 30, this.y - 30, 60, 60);
+            
+            // Background
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(this.x - 30, this.y - 30, 60, 60);
+            
+            // Emoji
+            ctx.font = '35px Arial';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText(this.data.emoji, this.x, this.y);
             
-            // Draw item name (small text)
-            ctx.font = '10px Arial';
-            ctx.fillStyle = '#000';
-            ctx.fillText(this.data.name, this.x, this.y + 35);
+            // Feedback
+            if (this.feedbackTimer > 0) {
+                ctx.font = 'bold 24px Arial';
+                ctx.fillStyle = this.feedbackColor;
+                ctx.fillText(this.feedbackText, this.x, this.y - 50);
+            }
+            
+            ctx.restore();
         }
         
         isOffScreen() {
-            return this.y > canvas.height + 50;
+            return this.y > canvas.height + 100;
         }
         
         checkCollision(bin) {
             return (
                 this.x > bin.x &&
                 this.x < bin.x + bin.width &&
-                this.y + this.height > bin.y &&
+                this.y > bin.y &&
                 this.y < bin.y + bin.height
             );
+        }
+        
+        showFeedback(text, color) {
+            this.feedbackText = text;
+            this.feedbackColor = color;
+            this.feedbackTimer = 40;
         }
     }
     
@@ -119,48 +158,64 @@ const TrashSortingGame = (() => {
      * Bin class
      */
     class Bin {
-        constructor(type, index) {
+        constructor(type, index, posX) {
             this.type = type;
             this.index = index;
-            this.width = 80;
-            this.height = 60;
-            this.x = canvas.width / 2 - this.width / 2;
-            this.y = canvas.height - this.height - 10;
+            this.width = 150;
+            this.height = 100;
+            this.x = posX;
+            this.y = canvas.height - this.height - 20;
+            this.isTarget = false;
         }
         
-        draw(isActive) {
-            // Draw bin rectangle
+        draw() {
+            ctx.save();
+            
+            // Target highlight
+            if (this.isTarget) {
+                ctx.shadowColor = '#FFD700';
+                ctx.shadowBlur = 20;
+                ctx.strokeStyle = '#FFD700';
+                ctx.lineWidth = 6;
+                ctx.strokeRect(this.x - 5, this.y - 5, this.width + 10, this.height + 10);
+            }
+            
+            // Bin body
             ctx.fillStyle = this.type.color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
             
-            // Draw border
-            ctx.strokeStyle = isActive ? '#FFD700' : '#000';
-            ctx.lineWidth = isActive ? 4 : 2;
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 4;
             ctx.strokeRect(this.x, this.y, this.width, this.height);
             
-            // Draw emoji
-            ctx.font = '30px Arial';
+            // Emoji
+            ctx.shadowBlur = 0;
+            ctx.font = '48px Arial';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText(this.type.emoji, this.x + this.width / 2, this.y + this.height / 2);
+            ctx.fillText(this.type.emoji, this.x + this.width / 2, this.y + this.height / 2 - 10);
             
-            // Draw label
-            ctx.font = '12px Arial';
-            ctx.fillStyle = '#FFF';
+            // Label
+            ctx.font = 'bold 10px "Press Start 2P", monospace';
+            ctx.fillStyle = '#FFFFFF';
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 3;
+            ctx.strokeText(this.type.name, this.x + this.width / 2, this.y + this.height + 15);
             ctx.fillText(this.type.name, this.x + this.width / 2, this.y + this.height + 15);
-        }
-        
-        moveLeft() {
-            this.x = Math.max(10, this.x - BIN_SPEED);
-        }
-        
-        moveRight() {
-            this.x = Math.min(canvas.width - this.width - 10, this.x + BIN_SPEED);
+            
+            // Target indicator
+            if (this.isTarget) {
+                ctx.font = 'bold 14px Arial';
+                ctx.fillStyle = '#FFD700';
+                ctx.fillText('🎯 MỤC TIÊU', this.x + this.width / 2, this.y - 15);
+            }
+            
+            ctx.restore();
         }
     }
     
     /**
-     * Initialize game elements
+     * Initialize elements
      */
     function initElements() {
         canvas = document.getElementById('gameCanvas');
@@ -170,60 +225,88 @@ const TrashSortingGame = (() => {
         
         elements = {
             timeLeft: document.getElementById('timeLeft'),
+            score: document.getElementById('scoreValue'),
             correctCount: document.getElementById('correctCount'),
             wrongCount: document.getElementById('wrongCount'),
-            quitSortingBtn: document.getElementById('quitSortingBtn'),
-            binSelectBtns: document.querySelectorAll('.bin-select-btn')
+            targetBinName: document.getElementById('targetBinName'),
+            targetBinEmoji: document.getElementById('targetBinEmoji')
         };
-        
-        // Setup event listeners
-        elements.quitSortingBtn?.addEventListener('click', quitGame);
-        
-        // Bin selection buttons
-        elements.binSelectBtns.forEach((btn, index) => {
-            btn.addEventListener('click', () => selectBin(index));
-        });
-        
-        // Keyboard controls
-        document.addEventListener('keydown', handleKeyPress);
         
         return true;
     }
     
     /**
-     * Start the game
+     * Start game
      */
     function start() {
         if (!initElements()) {
-            alert('Canvas not found! Cannot start game.');
+            alert('Canvas not found!');
             return;
         }
         
-        // Reset game state
+        // Reset state
         timeLeft = GAME_DURATION;
+        score = 0;
         correctCount = 0;
         wrongCount = 0;
+        itemsSpawned = 0;
         fallingItems = [];
         isPlaying = true;
-        activeBinIndex = 0;
+        
+        // Random target bin
+        targetBinIndex = Math.floor(Math.random() * BIN_TYPES.length);
         
         // Create bins
-        bins = BIN_TYPES.map((type, index) => new Bin(type, index));
+        const binSpacing = canvas.width / (BIN_TYPES.length + 1);
+        bins = BIN_TYPES.map((type, index) => {
+            const bin = new Bin(type, index, binSpacing * (index + 1) - 75);
+            bin.isTarget = (index === targetBinIndex);
+            return bin;
+        });
         
         // Update UI
         updateStats();
-        selectBin(0);
+        updateMissionDisplay();
         
-        // Start timers
-        startTimer();
-        startSpawning();
+        // Show mission
+        showMissionNotification();
         
-        // Start game loop
-        gameLoop = requestAnimationFrame(update);
+        // Start after 3 seconds
+        setTimeout(() => {
+            startTimer();
+            startSpawning();
+            gameLoop = requestAnimationFrame(update);
+        }, 3000);
     }
     
     /**
-     * Start countdown timer
+     * Show mission notification
+     */
+    function showMissionNotification() {
+        const targetBin = BIN_TYPES[targetBinIndex];
+        const message = `🎯 NHIỆM VỤ: Phân loại rác vào thùng "${targetBin.name}" ${targetBin.emoji}!`;
+        
+        if (window.GameState && window.GameState.showNotification) {
+            window.GameState.showNotification(message, 'success');
+        }
+    }
+    
+    /**
+     * Update mission display
+     */
+    function updateMissionDisplay() {
+        const targetBin = BIN_TYPES[targetBinIndex];
+        if (elements.targetBinName) {
+            elements.targetBinName.textContent = targetBin.name;
+            elements.targetBinName.style.color = targetBin.color;
+        }
+        if (elements.targetBinEmoji) {
+            elements.targetBinEmoji.textContent = targetBin.emoji;
+        }
+    }
+    
+    /**
+     * Start timer
      */
     function startTimer() {
         const timerInterval = setInterval(() => {
@@ -235,7 +318,7 @@ const TrashSortingGame = (() => {
             timeLeft--;
             updateStats();
             
-            if (timeLeft <= 0) {
+            if (timeLeft <= 0 || itemsSpawned >= TOTAL_ITEMS && fallingItems.length === 0) {
                 clearInterval(timerInterval);
                 endGame();
             }
@@ -246,10 +329,10 @@ const TrashSortingGame = (() => {
      * Start spawning items
      */
     function startSpawning() {
-        spawnItem(); // Spawn first item immediately
+        spawnItem();
         
         spawnTimer = setInterval(() => {
-            if (!isPlaying) {
+            if (!isPlaying || itemsSpawned >= TOTAL_ITEMS) {
                 clearInterval(spawnTimer);
                 return;
             }
@@ -258,67 +341,16 @@ const TrashSortingGame = (() => {
     }
     
     /**
-     * Spawn a new trash item
+     * Spawn random item
      */
     function spawnItem() {
         const randomItem = TRASH_ITEMS[Math.floor(Math.random() * TRASH_ITEMS.length)];
         fallingItems.push(new TrashItem(randomItem));
+        itemsSpawned++;
     }
     
     /**
-     * Select active bin
-     */
-    function selectBin(index) {
-        activeBinIndex = index;
-        
-        // Update button states
-        elements.binSelectBtns.forEach((btn, i) => {
-            if (i === index) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-    }
-    
-    /**
-     * Handle keyboard input
-     */
-    function handleKeyPress(e) {
-        if (!isPlaying) return;
-        
-        const activeBin = bins[activeBinIndex];
-        
-        switch(e.key) {
-            case 'ArrowLeft':
-            case 'a':
-            case 'A':
-                activeBin.moveLeft();
-                e.preventDefault();
-                break;
-            case 'ArrowRight':
-            case 'd':
-            case 'D':
-                activeBin.moveRight();
-                e.preventDefault();
-                break;
-            case '1':
-                selectBin(0);
-                break;
-            case '2':
-                selectBin(1);
-                break;
-            case '3':
-                selectBin(2);
-                break;
-            case '4':
-                selectBin(3);
-                break;
-        }
-    }
-    
-    /**
-     * Main game update loop
+     * Main update loop
      */
     function update() {
         if (!isPlaying) return;
@@ -327,141 +359,116 @@ const TrashSortingGame = (() => {
         ctx.fillStyle = '#87CEEB';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        // Update and draw falling items
+        // Draw bins
+        bins.forEach(bin => bin.draw());
+        
+        // Update and draw items
         for (let i = fallingItems.length - 1; i >= 0; i--) {
             const item = fallingItems[i];
             
             if (item.caught) {
-                fallingItems.splice(i, 1);
+                if (item.feedbackTimer === 0) {
+                    fallingItems.splice(i, 1);
+                }
                 continue;
             }
             
             item.update();
             item.draw();
             
-            // Check collision with active bin
-            const activeBin = bins[activeBinIndex];
-            if (item.checkCollision(activeBin)) {
-                handleCatch(item);
-                fallingItems.splice(i, 1);
-                continue;
-            }
+            // Check collision with all bins
+            bins.forEach(bin => {
+                if (item.checkCollision(bin)) {
+                    handleItemCatch(item, bin);
+                }
+            });
             
-            // Remove if off screen (missed)
+            // Remove if off screen
             if (item.isOffScreen()) {
                 fallingItems.splice(i, 1);
             }
         }
         
-        // Draw all bins (inactive ones transparent)
-        bins.forEach((bin, index) => {
-            if (index === activeBinIndex) {
-                bin.draw(true);
-            } else {
-                ctx.globalAlpha = 0.3;
-                bin.draw(false);
-                ctx.globalAlpha = 1.0;
-            }
-        });
-        
         gameLoop = requestAnimationFrame(update);
     }
     
     /**
-     * Handle catching an item
+     * Handle item catch
      */
-    function handleCatch(item) {
-        const isCorrect = item.data.type === activeBinIndex;
+    function handleItemCatch(item, bin) {
+        item.caught = true;
         
-        if (isCorrect) {
-            correctCount++;
-            window.GameController.addPoints(POINTS_CORRECT);
-            showFeedback('✓ Correct!', '#4CAF50');
-        } else {
-            wrongCount++;
-            window.GameController.subtractPoints(POINTS_WRONG);
-            showFeedback('✗ Wrong bin!', '#F44336');
+        // Check if target bin
+        if (bin.index === targetBinIndex) {
+            // Check if correct item type
+            if (item.data.type === targetBinIndex) {
+                // CORRECT!
+                score += POINTS_CORRECT;
+                correctCount++;
+                item.showFeedback('✓ +10', '#4CAF50');
+                window.GameState.addPoints(POINTS_CORRECT);
+            } else {
+                // WRONG item in target bin
+                score -= POINTS_WRONG;
+                wrongCount++;
+                item.showFeedback('✗ -5', '#F44336');
+                window.GameState.subtractPoints(POINTS_WRONG);
+            }
         }
+        // If not target bin, no points (0 điểm)
         
         updateStats();
     }
     
     /**
-     * Show feedback on canvas
-     */
-    function showFeedback(text, color) {
-        // This could be enhanced with a proper notification system
-        // For now, we'll use the game controller's notification
-        window.GameController.showNotification(text, color === '#4CAF50' ? 'success' : 'error');
-    }
-    
-    /**
-     * Update stats display
+     * Update stats
      */
     function updateStats() {
-        if (elements.timeLeft) {
-            elements.timeLeft.textContent = timeLeft;
-        }
-        if (elements.correctCount) {
-            elements.correctCount.textContent = correctCount;
-        }
-        if (elements.wrongCount) {
-            elements.wrongCount.textContent = wrongCount;
-        }
+        if (elements.timeLeft) elements.timeLeft.textContent = timeLeft;
+        if (elements.score) elements.score.textContent = score;
+        if (elements.correctCount) elements.correctCount.textContent = correctCount;
+        if (elements.wrongCount) elements.wrongCount.textContent = wrongCount;
     }
     
     /**
-     * End the game
+     * End game
      */
     function endGame() {
         isPlaying = false;
+        clearInterval(spawnTimer);
+        cancelAnimationFrame(gameLoop);
         
-        if (gameLoop) {
-            cancelAnimationFrame(gameLoop);
-        }
+        const passed = score >= PASS_SCORE;
+        const targetBin = BIN_TYPES[targetBinIndex];
         
-        if (spawnTimer) {
-            clearInterval(spawnTimer);
-        }
+        // Store results
+        sessionStorage.setItem('sortingGameResults', JSON.stringify({
+            score: score,
+            correctCount: correctCount,
+            wrongCount: wrongCount,
+            passed: passed,
+            targetBin: targetBin.name,
+            knowledge: targetBin.knowledge,
+            passScore: PASS_SCORE
+        }));
         
-        const pointsEarned = (correctCount * POINTS_CORRECT) - (wrongCount * POINTS_WRONG);
-        
-        // Remove keyboard listener
-        document.removeEventListener('keydown', handleKeyPress);
-        
-        if (window.GameController && window.GameController.showResults) {
-            window.GameController.showResults('sorting', pointsEarned, {
-                correct: correctCount,
-                wrong: wrongCount
-            });
-        } else {
-            // Fallback navigation
-            window.location.href = `results.html?type=sorting&points=${pointsEarned}&correct=${correctCount}&wrong=${wrongCount}`;
-        }
+        // Navigate to results
+        setTimeout(() => {
+            window.location.href = 'results.html';
+        }, 1000);
     }
     
     /**
-     * Quit game early
+     * Public API
      */
-    function quitGame() {
-        if (confirm('Are you sure you want to quit?')) {
-            isPlaying = false;
-            if (gameLoop) {
-                cancelAnimationFrame(gameLoop);
-            }
-            if (spawnTimer) {
-                clearInterval(spawnTimer);
-            }
-            document.removeEventListener('keydown', handleKeyPress);
-            window.location.href = 'menu.html';
-        }
-    }
-    
-    // Public API
     return {
-        start
+        start: start
     };
 })();
 
-// Make available globally
-window.TrashSortingGame = TrashSortingGame;
+// Auto-start
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.TrashSortingGame) {
+        window.TrashSortingGame.start();
+    }
+});

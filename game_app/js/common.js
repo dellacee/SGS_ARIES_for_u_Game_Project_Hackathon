@@ -202,10 +202,10 @@ function getCurrentStageName() {
 function playGrowthAnimation() {
     const treeStage = document.getElementById('treeStage');
     if (treeStage) {
-        treeStage.classList.add('pulse');
+        treeStage.classList.add('tree-grow-celebrate');
         setTimeout(() => {
-            treeStage.classList.remove('pulse');
-        }, 500);
+            treeStage.classList.remove('tree-grow-celebrate');
+        }, 1000);
     }
 }
 
