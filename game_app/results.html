@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GreenGrow Game Results">
+    <meta name="author" content="SGS Aries for U Team">
+    <title>GreenGrow - Results</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="game-header">
+        <div class="header-left">
+            <a href="menu.html" class="btn btn-icon" aria-label="Back to Menu">🏠</a>
+            <h2 id="resultsHeaderTitle">Game Results</h2>
+        </div>
+        <div class="header-right">
+            <div class="points-display">
+                <span class="points-icon">💧</span>
+                <span id="pointsValue">0</span>
+                <span class="points-label">Green Points</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tree Visualization Area -->
+    <div class="tree-section">
+        <div class="tree-container">
+            <div id="treeStage" class="tree-stage stage-1" aria-label="Tree growth stage">
+                <div class="tree-visual">
+                    <div class="seed">🌰</div>
+                    <div class="sprout">🌱</div>
+                    <div class="sapling">🌿</div>
+                    <div class="young-tree">🌳</div>
+                    <div class="blossom-tree">🌸🌳🌸</div>
+                </div>
+            </div>
+            <div class="tree-info">
+                <p id="treeStageText" class="tree-stage-text">Seed Stage</p>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <p id="nextStageText" class="next-stage-text">21 points to Sprout</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div class="results-screen">
+        <div class="results-content">
+            <h2 id="resultsTitle">Game Complete!</h2>
+            <div class="results-stats">
+                <p id="resultsMessage" class="results-message"></p>
+                <div class="results-details">
+                    <div class="result-item">
+                        <span class="result-label">Points Earned:</span>
+                        <span id="pointsEarned" class="result-value">0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Total Points:</span>
+                        <span id="totalPoints" class="result-value">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="results-actions">
+                <button id="playAgainBtn" class="btn btn-primary">Play Again</button>
+                <a href="menu.html" class="btn btn-secondary">Back to Menu</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification hidden">
+        <p id="notificationText"></p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script>
+        // Get results from URL parameters or sessionStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameType = urlParams.get('type') || sessionStorage.getItem('gameType');
+            const pointsEarned = parseInt(urlParams.get('points') || sessionStorage.getItem('pointsEarned') || '0');
+            const score = parseInt(urlParams.get('score') || sessionStorage.getItem('score') || '0');
+            const total = parseInt(urlParams.get('total') || sessionStorage.getItem('total') || '0');
+            const correct = parseInt(urlParams.get('correct') || sessionStorage.getItem('correct') || '0');
+            const wrong = parseInt(urlParams.get('wrong') || sessionStorage.getItem('wrong') || '0');
+            
+            // Update results display
+            const resultsTitle = document.getElementById('resultsTitle');
+            const resultsHeaderTitle = document.getElementById('resultsHeaderTitle');
+            const resultsMessage = document.getElementById('resultsMessage');
+            const pointsEarnedEl = document.getElementById('pointsEarned');
+            const totalPointsEl = document.getElementById('totalPoints');
+            const playAgainBtn = document.getElementById('playAgainBtn');
+            
+            if (gameType === 'quiz') {
+                if (resultsTitle) resultsTitle.textContent = '📚 Quiz Complete!';
+                if (resultsHeaderTitle) resultsHeaderTitle.textContent = 'Quiz Results';
+                if (resultsMessage && score && total) {
+                    resultsMessage.textContent = `You answered ${score} out of ${total} questions correctly!`;
+                }
+                if (playAgainBtn) {
+                    playAgainBtn.onclick = () => window.location.href = 'quiz.html';
+                }
+            } else if (gameType === 'sorting') {
+                if (resultsTitle) resultsTitle.textContent = '♻️ Sorting Complete!';
+                if (resultsHeaderTitle) resultsHeaderTitle.textContent = 'Sorting Results';
+                if (resultsMessage && correct !== undefined) {
+                    resultsMessage.textContent = `You sorted ${correct} items correctly and ${wrong} incorrectly!`;
+                }
+                if (playAgainBtn) {
+                    playAgainBtn.onclick = () => window.location.href = 'sorting.html';
+                }
+            }
+            
+            if (pointsEarnedEl) {
+                pointsEarnedEl.textContent = pointsEarned > 0 ? '+' + pointsEarned : pointsEarned;
+            }
+            
+            // Total points from common.js GameState
+            if (totalPointsEl && window.GameState) {
+                totalPointsEl.textContent = window.GameState.greenPoints;
+            }
+            
+            // Clear session storage
+            sessionStorage.removeItem('gameType');
+            sessionStorage.removeItem('pointsEarned');
+            sessionStorage.removeItem('score');
+            sessionStorage.removeItem('total');
+            sessionStorage.removeItem('correct');
+            sessionStorage.removeItem('wrong');
+        });
+    </script>
+</body>
+</html>

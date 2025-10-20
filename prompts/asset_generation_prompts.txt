@@ -1,0 +1,157 @@
+# ASSET GENERATION PROMPTS
+# Used for creating visual and audio assets using AI tools
+
+## Tree Growth Stages - Image Generation
+
+"""
+STYLE: Cute, friendly, cartoon illustration style with soft colors and clean lines. Suitable for educational games.
+
+Generate 5 variations of a tree in different growth stages:
+
+1. SEED STAGE
+"A small brown seed planted in dark soil, with a tiny green shoot just beginning to emerge. Simple, hopeful composition. Cartoon style, warm earth tones, white background."
+
+2. SPROUT STAGE
+"A young plant sprout with 2-3 bright green leaves emerging from soil. Delicate stem, fresh growth. Cartoon style, vibrant green, white background."
+
+3. SAPLING STAGE
+"A young tree sapling with a thin trunk and several branches with leaves. About 1/3 grown. Cartoon style, healthy green foliage, white background."
+
+4. YOUNG TREE STAGE
+"A growing tree with a stronger trunk, multiple branches, and full green canopy. About 2/3 grown. Cartoon style, lush appearance, white background."
+
+5. BLOSSOMING TREE STAGE
+"A mature, beautiful tree with thick trunk, full canopy, and colorful flowers or fruit. Fully grown and thriving. Cartoon style, vibrant colors, celebratory feel, white background."
+
+SIZE: 512x512px, PNG with transparent background
+"""
+
+## Waste Item Icons - Image Generation
+
+"""
+STYLE: Simple, recognizable icons in flat design style with slight 3D effect
+
+Generate icons for common waste items (128x128px each, PNG):
+
+RECYCLABLE (Green Bin):
+- "Plastic water bottle icon, clear blue, flat design"
+- "Aluminum soda can icon, silver/metallic, flat design"
+- "Folded newspaper icon, flat design"
+- "Cardboard box icon, brown, flat design"
+- "Glass bottle icon, transparent green, flat design"
+
+ORGANIC (Brown Bin):
+- "Apple core icon, brown and red, flat design"
+- "Banana peel icon, yellow with brown spots, flat design"
+- "Green leaves icon, flat design"
+- "Food scraps icon, flat design"
+- "Eggshells icon, white, flat design"
+
+RESIDUAL (Grey Bin):
+- "Broken ceramic mug icon, grey, flat design"
+- "Disposable diaper icon, flat design"
+- "Styrofoam packaging icon, white, flat design"
+- "Candy wrapper icon, colorful, flat design"
+
+HAZARDOUS (Red Bin):
+- "AA battery icon, black and gold, flat design"
+- "Spray paint can icon with warning symbol, flat design"
+- "Broken light bulb icon, flat design"
+- "Old phone icon, flat design"
+"""
+
+## Bin Graphics - Image Generation
+
+"""
+Generate 4 waste bins in cartoon style, viewed from front angle:
+
+1. GREEN RECYCLING BIN
+"A bright green waste bin with white recycling symbol (three arrows in triangle). Cartoon style, friendly appearance, slight 3D effect. 256x256px PNG."
+
+2. BROWN ORGANIC BIN
+"A brown waste bin with white leaf/compost symbol. Cartoon style, friendly appearance, slight 3D effect. 256x256px PNG."
+
+3. GREY RESIDUAL BIN
+"A grey/black waste bin with white general waste symbol. Cartoon style, friendly appearance, slight 3D effect. 256x256px PNG."
+
+4. RED HAZARDOUS BIN
+"A red waste bin with white hazard symbol (exclamation mark or warning triangle). Cartoon style, friendly appearance, slight 3D effect. 256x256px PNG."
+
+All bins should have consistent style and proportions.
+"""
+
+## Background Graphics
+
+"""
+GAME BACKGROUND:
+"A peaceful outdoor scene with blue sky, fluffy clouds, green grass field, and small hills in the distance. Cartoon style, cheerful colors, suitable for educational game. 1920x1080px."
+
+MENU BACKGROUND:
+"Soft gradient background with nature theme - light green to blue, with subtle leaf silhouettes. Clean, modern, suitable for game menu. 1920x1080px."
+"""
+
+## UI Elements
+
+"""
+Generate UI buttons and elements in friendly, rounded style:
+
+BUTTONS:
+- "Start button - rounded rectangle, green gradient, white text 'START', slight shadow"
+- "Play Quiz button - blue gradient, white text"
+- "Play Sorting Game button - orange gradient, white text"
+- "Pause button - circular, yellow, pause icon"
+- "Home button - circular, grey, house icon"
+
+PROGRESS BAR:
+- "Horizontal progress bar frame - rounded corners, wooden texture or green border"
+- "Progress bar fill - bright green gradient, animated sparkle effect"
+
+POINT DISPLAY:
+- "Circular badge with leaf icon and number, green gradient, white text"
+"""
+
+## Sound Effect Prompts (for AI audio generators)
+
+"""
+Generate short sound effects (1-2 seconds each):
+
+1. CORRECT_ANSWER / CORRECT_SORT
+"Cheerful chime, positive feedback, bells, major chord, uplifting"
+
+2. WRONG_ANSWER / WRONG_SORT
+"Gentle buzzer, soft error sound, not harsh, educational context"
+
+3. TREE_GROWTH
+"Magical sparkle sound, wind chimes, nature magic, growth whoosh"
+
+4. BUTTON_CLICK
+"Soft click, friendly interface sound, subtle"
+
+5. ITEM_FALLING
+"Soft whoosh, light object falling through air"
+
+6. POINT_EARNED
+"Coin collect, small reward chime, satisfying"
+
+7. LEVEL_COMPLETE
+"Victory fanfare, 2-3 seconds, celebratory, major key"
+
+FORMAT: MP3 or OGG, 44.1kHz
+"""
+
+## Background Music Prompt
+
+"""
+Generate background music tracks (looping, 60-90 seconds):
+
+1. MAIN_MENU_MUSIC
+"Gentle, peaceful nature theme. Light piano and strings. Hopeful and welcoming. Suitable for children's educational game. Loopable. Tempo: 80-90 BPM."
+
+2. GAMEPLAY_MUSIC
+"Upbeat but not stressful. Playful melody with light percussion. Encourages focus and fun. Nature-inspired instruments. Loopable. Tempo: 100-110 BPM."
+
+3. VICTORY_MUSIC
+"Celebratory and triumphant, but gentle. Suitable for environmental achievement. Major key, uplifting. 20 seconds, can fade out."
+
+FORMAT: MP3, 128kbps, stereo
+```

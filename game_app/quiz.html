@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GreenGrow Environmental Quiz">
+    <meta name="author" content="SGS Aries for U Team">
+    <title>GreenGrow - Quiz Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="game-header">
+        <div class="header-left">
+            <a href="menu.html" class="btn btn-icon" aria-label="Back to Menu">🏠</a>
+            <h2>Environmental Quiz</h2>
+        </div>
+        <div class="header-right">
+            <div class="points-display">
+                <span class="points-icon">💧</span>
+                <span id="pointsValue">0</span>
+                <span class="points-label">Green Points</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tree Visualization Area (Compact) -->
+    <div class="tree-section tree-section-compact">
+        <div class="tree-container">
+            <div id="treeStage" class="tree-stage stage-1" aria-label="Tree growth stage">
+                <div class="tree-visual">
+                    <div class="seed">🌰</div>
+                    <div class="sprout">🌱</div>
+                    <div class="sapling">🌿</div>
+                    <div class="young-tree">🌳</div>
+                    <div class="blossom-tree">🌸🌳🌸</div>
+                </div>
+            </div>
+            <div class="tree-info">
+                <p id="treeStageText" class="tree-stage-text">Seed Stage</p>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Game Screen -->
+    <div class="quiz-screen">
+        <div class="quiz-content">
+            <div class="quiz-header">
+                <span id="questionNumber" class="question-number">Question 1/10</span>
+                <a href="menu.html" class="btn btn-small">Back to Menu</a>
+            </div>
+            <div class="question-container">
+                <h3 id="questionText" class="question-text">Loading question...</h3>
+                <div id="answersContainer" class="answers-container">
+                    <button class="answer-btn" data-index="0">Answer A</button>
+                    <button class="answer-btn" data-index="1">Answer B</button>
+                    <button class="answer-btn" data-index="2">Answer C</button>
+                    <button class="answer-btn" data-index="3">Answer D</button>
+                </div>
+            </div>
+            <div id="quizFeedback" class="quiz-feedback hidden">
+                <p id="feedbackText" class="feedback-text"></p>
+                <button id="nextQuestionBtn" class="btn btn-primary">Next Question</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification hidden">
+        <p id="notificationText"></p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script src="js/quiz_game.js"></script>
+    <script>
+        // Auto-start quiz when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.QuizGame) {
+                window.QuizGame.start();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GreenGrow Game Menu">
+    <meta name="author" content="SGS Aries for U Team">
+    <title>GreenGrow - Menu</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="game-header">
+        <div class="header-left">
+            <a href="index.html" class="btn btn-icon" aria-label="Home">🏠</a>
+            <h2>GreenGrow</h2>
+        </div>
+        <div class="header-right">
+            <div class="points-display">
+                <span class="points-icon">💧</span>
+                <span id="pointsValue">0</span>
+                <span class="points-label">Green Points</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tree Visualization Area -->
+    <div class="tree-section">
+        <div class="tree-container">
+            <div id="treeStage" class="tree-stage stage-1" aria-label="Tree growth stage">
+                <div class="tree-visual">
+                    <!-- Tree stages will be shown through CSS classes -->
+                    <div class="seed">🌰</div>
+                    <div class="sprout">🌱</div>
+                    <div class="sapling">🌿</div>
+                    <div class="young-tree">🌳</div>
+                    <div class="blossom-tree">🌸🌳🌸</div>
+                </div>
+            </div>
+            <div class="tree-info">
+                <p id="treeStageText" class="tree-stage-text">Seed Stage</p>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <p id="nextStageText" class="next-stage-text">21 points to Sprout</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Screen -->
+    <div class="menu-screen">
+        <div class="menu-content">
+            <h2>Choose Your Activity</h2>
+            <p class="menu-description">Earn Green Points to help your tree grow!</p>
+            <div class="menu-buttons">
+                <a href="quiz.html" class="btn btn-game btn-quiz">
+                    <span class="btn-icon">📚</span>
+                    <span class="btn-text">Environmental Quiz</span>
+                    <span class="btn-points">+10 points per correct answer</span>
+                </a>
+                <a href="sorting.html" class="btn btn-game btn-sorting">
+                    <span class="btn-icon">♻️</span>
+                    <span class="btn-text">Trash Sorting Game</span>
+                    <span class="btn-points">+5 points per correct sort</span>
+                </a>
+            </div>
+            <div class="how-to-play">
+                <button id="howToPlayBtn" class="btn btn-secondary">How to Play</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for How to Play -->
+    <div id="howToPlayModal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2>How to Play GreenGrow</h2>
+            <div class="modal-body">
+                <section>
+                    <h3>🎯 Goal</h3>
+                    <p>Grow your tree from a tiny seed to a beautiful blossoming tree by earning Green Points!</p>
+                </section>
+                <section>
+                    <h3>📚 Environmental Quiz</h3>
+                    <p>Answer questions about the environment, sustainability, and UN SDGs.</p>
+                    <ul>
+                        <li>+10 points for each correct answer</li>
+                        <li>Learn from educational explanations</li>
+                        <li>10 questions per round</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>♻️ Trash Sorting Game</h3>
+                    <p>Catch falling trash items with the correct color-coded bin:</p>
+                    <ul>
+                        <li><span style="color: #4CAF50;">🟢 Green:</span> Recyclable (plastic, paper, metal)</li>
+                        <li><span style="color: #8B4513;">🟤 Brown:</span> Organic (food, leaves)</li>
+                        <li><span style="color: #757575;">⚫ Grey:</span> Residual (non-recyclables)</li>
+                        <li><span style="color: #F44336;">🔴 Red:</span> Hazardous (batteries, chemicals)</li>
+                    </ul>
+                    <p>+5 points for correct sorting, -3 for mistakes. Play for 60 seconds!</p>
+                </section>
+                <section>
+                    <h3>🌳 Tree Growth Stages</h3>
+                    <ol>
+                        <li>Seed (0-20 points)</li>
+                        <li>Sprout (21-50 points)</li>
+                        <li>Sapling (51-100 points)</li>
+                        <li>Young Tree (101-150 points)</li>
+                        <li>Blossoming Tree (151+ points)</li>
+                    </ol>
+                </section>
+            </div>
+            <button class="btn btn-primary modal-btn">Got It!</button>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification hidden">
+        <p id="notificationText"></p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script>
+        // Initialize menu page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup how to play modal
+            const howToPlayBtn = document.getElementById('howToPlayBtn');
+            const modal = document.getElementById('howToPlayModal');
+            const modalClose = document.querySelector('.modal-close');
+            const modalBtn = document.querySelector('.modal-btn');
+            
+            howToPlayBtn?.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+            });
+            
+            modalClose?.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+            
+            modalBtn?.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+            
+            modal?.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GreenGrow Trash Sorting Game">
+    <meta name="author" content="SGS Aries for U Team">
+    <title>GreenGrow - Sorting Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="game-header">
+        <div class="header-left">
+            <a href="menu.html" class="btn btn-icon" aria-label="Back to Menu">🏠</a>
+            <h2>Trash Sorting Game</h2>
+        </div>
+        <div class="header-right">
+            <div class="points-display">
+                <span class="points-icon">💧</span>
+                <span id="pointsValue">0</span>
+                <span class="points-label">Green Points</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tree Visualization Area (Compact) -->
+    <div class="tree-section tree-section-compact">
+        <div class="tree-container">
+            <div id="treeStage" class="tree-stage stage-1" aria-label="Tree growth stage">
+                <div class="tree-visual">
+                    <div class="seed">🌰</div>
+                    <div class="sprout">🌱</div>
+                    <div class="sapling">🌿</div>
+                    <div class="young-tree">🌳</div>
+                    <div class="blossom-tree">🌸🌳🌸</div>
+                </div>
+            </div>
+            <div class="tree-info">
+                <p id="treeStageText" class="tree-stage-text">Seed Stage</p>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trash Sorting Game Screen -->
+    <div class="sorting-screen">
+        <div class="sorting-content">
+            <div class="sorting-header">
+                <div class="sorting-stats">
+                    <span class="stat">
+                        <span class="stat-label">Time:</span>
+                        <span id="timeLeft" class="stat-value">60</span>s
+                    </span>
+                    <span class="stat">
+                        <span class="stat-label">Correct:</span>
+                        <span id="correctCount" class="stat-value">0</span>
+                    </span>
+                    <span class="stat">
+                        <span class="stat-label">Wrong:</span>
+                        <span id="wrongCount" class="stat-value">0</span>
+                    </span>
+                </div>
+                <a href="menu.html" id="quitSortingBtn" class="btn btn-small">Quit</a>
+            </div>
+            <div class="game-canvas-container">
+                <canvas id="gameCanvas" width="800" height="600">
+                    Your browser does not support the HTML5 canvas element.
+                </canvas>
+            </div>
+            <div class="sorting-controls">
+                <p class="controls-hint">Use Arrow Keys ← → or A/D to move the active bin</p>
+                <div class="bin-selector">
+                    <button class="bin-select-btn active" data-bin="0" style="background-color: #4CAF50;">Green</button>
+                    <button class="bin-select-btn" data-bin="1" style="background-color: #8B4513;">Brown</button>
+                    <button class="bin-select-btn" data-bin="2" style="background-color: #757575;">Grey</button>
+                    <button class="bin-select-btn" data-bin="3" style="background-color: #F44336;">Red</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification hidden">
+        <p id="notificationText"></p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script src="js/trash_sorting_game.js"></script>
+    <script>
+        // Auto-start sorting game when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.TrashSortingGame) {
+                window.TrashSortingGame.start();
+            }
+        });
+    </script>
+</body>
+</html>

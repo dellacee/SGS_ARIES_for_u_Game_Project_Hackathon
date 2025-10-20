@@ -1,0 +1,97 @@
+# CONCEPT GENERATION PROMPTS
+# Used for brainstorming and ideation phase
+
+## Initial Game Concept Prompt
+
+"""
+Create a web-based educational game concept that teaches players about environmental sustainability and the UN Sustainable Development Goals. The game should:
+- Be engaging and fun for ages 10+
+- Include interactive gameplay elements
+- Incorporate visual progression/rewards
+- Focus on SDG 12 (Responsible Consumption), SDG 13 (Climate Action), and SDG 15 (Life on Land)
+- Be playable in a web browser without plugins
+- Include educational content about recycling and waste management
+
+The game should use a metaphor of growing a tree to represent positive environmental impact.
+"""
+
+## Tree Growth Metaphor Prompt
+
+"""
+Design a visual progression system where a tree grows from seed to full blossom based on player actions. The tree should have 5 distinct stages:
+1. Seed in soil
+2. First sprout with small leaves
+3. Young sapling with developing branches
+4. Growing tree with fuller canopy
+5. Mature blossoming tree with flowers/fruit
+
+Each stage should be visually distinct and rewarding. The tree represents the player's positive environmental impact.
+"""
+
+## Mini-Game Selection Prompt
+
+"""
+Suggest 2-3 mini-game concepts that teach environmental awareness:
+- Games should be simple, browser-based, and require minimal controls
+- Should teach about waste management, recycling, or sustainability
+- Should be appropriate for educational settings
+- One should be knowledge-based, others action-based
+- Games should award points that contribute to tree growth
+"""
+
+## Color-Coded Waste Bins Concept
+
+"""
+Design a waste sorting system using international color standards:
+- Green bin: Recyclable waste (plastic, paper, glass, metal)
+- Brown bin: Organic/compostable waste (food scraps, yard waste)
+- Grey/Black bin: General/residual waste (non-recyclables)
+- Red bin: Hazardous waste (batteries, chemicals, electronics)
+
+Create a list of common household items and which bin they belong in. Make it educational and accurate to real-world waste management practices.
+"""
+
+## Game Name and Branding Prompt
+
+"""
+Generate creative names for an environmental education game about growing a tree through eco-friendly actions. The name should:
+- Be memorable and positive
+- Reference growth, nature, or sustainability
+- Be appropriate for all ages
+- Work well as a hashtag
+- Suggest hope and positive change
+
+Consider variations with words like: Green, Grow, Seed, Sprout, Eco, Earth, Life, Journey, Quest
+"""
+
+## Target Audience and Learning Objectives
+
+"""
+Define the target audience and learning objectives for an environmental game:
+
+Target Audience:
+- Primary: Students ages 10-16
+- Secondary: General public interested in sustainability
+
+Learning Objectives:
+- Understand the UN SDGs related to environment
+- Learn proper waste segregation techniques
+- Recognize different types of waste and their environmental impact
+- Understand the importance of recycling and composting
+- Develop habits that support environmental sustainability
+- Feel empowered to make eco-friendly choices
+"""
+
+## Gamification Strategy Prompt
+
+"""
+Design a gamification system for an environmental education game:
+- Point system (Green Points as currency)
+- Visual progression (tree growth stages)
+- Immediate feedback (correct/incorrect sorting)
+- Educational moments (quiz questions with explanations)
+- Achievement milestones (reaching new tree stages)
+- Emotional engagement (nurturing a living thing)
+
+Balance fun gameplay with educational value.
+"""

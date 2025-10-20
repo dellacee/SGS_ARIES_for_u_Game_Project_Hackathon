@@ -1,0 +1,380 @@
+# REFINEMENT & DEBUGGING PROMPTS
+# Used for improving, debugging, and polishing the game
+
+## Code Review and Refactoring Prompt
+
+"""
+Review the GreenGrow game code for:
+
+1. CODE QUALITY
+   - Follow JavaScript best practices
+   - Use consistent naming conventions (camelCase)
+   - Proper indentation and formatting
+   - Remove console.logs from production code
+   - Add JSDoc comments for functions
+   - Eliminate code duplication
+   - Modular, reusable functions
+
+2. PERFORMANCE
+   - Identify performance bottlenecks
+   - Optimize animation loops
+   - Reduce unnecessary DOM manipulation
+   - Efficient event handling
+   - Memory leak prevention
+   - Asset loading optimization
+
+3. ERROR HANDLING
+   - Try-catch blocks for critical operations
+   - Graceful fallbacks if features not supported
+   - User-friendly error messages
+   - Handle edge cases (empty states, invalid input)
+   - Validate user input
+
+4. BROWSER COMPATIBILITY
+   - Works in Chrome, Firefox, Safari, Edge
+   - Polyfills for older browsers if needed
+   - Test on different screen sizes
+   - Mobile device testing
+
+Provide specific suggestions for improvements.
+"""
+
+## User Experience (UX) Improvement Prompt
+
+"""
+Improve the user experience of GreenGrow:
+
+1. ONBOARDING
+   - Clear instructions for first-time players
+   - Tutorial or "How to Play" section
+   - Visual cues and hints
+   - Progressive disclosure of complexity
+
+2. FEEDBACK
+   - Immediate visual feedback for all actions
+   - Clear success/error states
+   - Progress indicators
+   - Celebratory moments for achievements
+   - Sound effects enhance feedback
+
+3. CLARITY
+   - Self-explanatory UI elements
+   - Consistent icon usage
+   - Readable text sizes and fonts
+   - Good color contrast
+   - Logical information hierarchy
+
+4. FLOW
+   - Smooth transitions between screens
+   - No jarring interruptions
+   - Easy navigation back to menu
+   - Quick restart options
+   - Autosave progress
+
+5. ENGAGEMENT
+   - Balanced difficulty curve
+   - Rewarding progression
+   - Variety in questions and items
+   - Surprising delightful moments
+   - Emotional connection to tree growth
+
+Suggest specific UX improvements with examples.
+"""
+
+## Educational Content Refinement Prompt
+
+"""
+Enhance the educational value of the game:
+
+1. QUIZ QUESTIONS
+   - Verify accuracy of environmental facts
+   - Age-appropriate language and complexity
+   - Mix of easy, medium, hard questions
+   - Questions cover diverse topics:
+     * Climate change causes and effects
+     * Recycling processes and benefits
+     * SDG goals and targets
+     * Pollution types and solutions
+     * Biodiversity and ecosystems
+     * Sustainable consumption habits
+
+2. EXPLANATIONS
+   - Clear, concise educational feedback
+   - Explain why wrong answers are incorrect
+   - Provide additional context for correct answers
+   - Include interesting facts
+   - Link concepts to real-world impact
+
+3. WASTE SORTING ACCURACY
+   - Verify bin classifications match international standards
+   - Include regional variations notes if needed
+   - Explain why items go in specific bins
+   - Teach what happens to waste after sorting
+
+4. SDG ALIGNMENT
+   - Explicitly connect game elements to SDGs
+   - Show impact of actions on SDG progress
+   - Include SDG logos or references
+   - Educational resources about SDGs
+
+Review all educational content for accuracy and effectiveness.
+"""
+
+## Visual Polish Prompt
+
+"""
+Polish the visual presentation of GreenGrow:
+
+1. CONSISTENCY
+   - Unified art style across all assets
+   - Consistent color palette usage
+   - Matching icon styles
+   - Coherent typography
+
+2. AESTHETICS
+   - Appealing color combinations
+   - Proper use of whitespace
+   - Balanced layouts
+   - Smooth animations
+   - Attention to details (shadows, gradients)
+
+3. TREE VISUALIZATION
+   - Ensure 5 stages are clearly distinct
+   - Smooth transitions between stages
+   - Satisfying growth animations
+   - Perhaps add particles or sparkles
+   - Background changes as tree grows
+
+4. UI ELEMENTS
+   - Modern, clean button designs
+   - Clear iconography
+   - Readable point displays
+   - Attractive progress bars
+   - Professional-looking modals
+
+5. RESPONSIVE VISUALS
+   - Elements scale properly on different screens
+   - No pixelation or distortion
+   - Maintains aspect ratios
+   - Touch targets are appropriately sized
+
+Provide specific suggestions for visual improvements.
+"""
+
+## Bug Testing Checklist Prompt
+
+"""
+Create a comprehensive testing checklist for GreenGrow:
+
+FUNCTIONAL TESTING:
+- [ ] Game starts without errors
+- [ ] All buttons work correctly
+- [ ] Quiz questions display properly
+- [ ] Answer selection works
+- [ ] Points are awarded correctly
+- [ ] Tree grows at correct thresholds
+- [ ] Trash items fall and are catchable
+- [ ] Bins move smoothly with controls
+- [ ] Correct/incorrect sorting detected accurately
+- [ ] Game timer works correctly
+- [ ] Screen transitions work
+- [ ] localStorage save/load functions
+- [ ] Reset game works
+- [ ] All sounds play correctly
+- [ ] Images load properly
+
+CROSS-BROWSER TESTING:
+- [ ] Chrome (latest)
+- [ ] Firefox (latest)
+- [ ] Safari (latest)
+- [ ] Edge (latest)
+- [ ] Mobile browsers (iOS Safari, Chrome Mobile)
+
+EDGE CASES:
+- [ ] First time user (no saved data)
+- [ ] Maximum points reached
+- [ ] Negative points (below 0)
+- [ ] Very fast clicking/input
+- [ ] Window resize during gameplay
+- [ ] localStorage disabled/full
+- [ ] Slow network (asset loading)
+- [ ] Browser back/forward buttons
+
+ACCESSIBILITY:
+- [ ] Keyboard navigation works
+- [ ] Screen reader compatibility
+- [ ] Sufficient color contrast
+- [ ] Focus indicators visible
+- [ ] No flashing content
+
+Document all bugs found and prioritize fixes.
+"""
+
+## Performance Profiling Prompt
+
+"""
+Profile the game performance:
+
+1. MEASURE
+   - FPS during trash sorting game
+   - Time to load all assets
+   - Time to switch between screens
+   - Memory usage over time
+   - CPU usage during gameplay
+
+2. IDENTIFY BOTTLENECKS
+   - Slow functions (use Performance API)
+   - Large asset files
+   - Excessive reflows/repaints
+   - Memory leaks
+   - Unoptimized loops
+
+3. OPTIMIZE
+   - Compress images (use WebP if supported)
+   - Minify JavaScript and CSS
+   - Use requestAnimationFrame properly
+   - Debounce/throttle event handlers
+   - Lazy load non-critical assets
+   - Cache static data
+   - Optimize collision detection
+
+4. TARGET METRICS
+   - Load time < 3 seconds
+   - Maintain 60 FPS during gameplay
+   - Memory usage stable (no leaks)
+   - Responsive to user input (<100ms)
+
+Use browser DevTools to profile and measure improvements.
+"""
+
+## Mobile Optimization Prompt
+
+"""
+Optimize GreenGrow for mobile devices:
+
+1. TOUCH CONTROLS
+   - Replace mouse events with touch events
+   - Larger touch targets (min 44x44px)
+   - Swipe gestures for bin movement
+   - Prevent default touch behaviors (scroll, zoom)
+
+2. RESPONSIVE LAYOUT
+   - Stack elements vertically on small screens
+   - Adjust font sizes for readability
+   - Scale canvas appropriately
+   - Hide/simplify non-essential elements
+
+3. PERFORMANCE
+   - Reduce animation complexity on mobile
+   - Lower particle counts
+   - Optimize for mobile GPUs
+   - Reduce simultaneous falling items
+
+4. MOBILE-SPECIFIC FEATURES
+   - Detect portrait/landscape orientation
+   - Suggest landscape mode for better experience
+   - Handle virtual keyboard appearance
+   - Adjust for mobile browser UI
+
+5. TESTING
+   - Test on actual devices (iOS, Android)
+   - Test on different screen sizes
+   - Test in mobile browsers (Safari, Chrome)
+   - Test touch responsiveness
+
+Even if primary target is desktop, ensure mobile is playable.
+"""
+
+## Accessibility Audit Prompt
+
+"""
+Conduct an accessibility audit of GreenGrow:
+
+1. WCAG 2.1 COMPLIANCE
+   - Level AA minimum
+   - Color contrast ratios (4.5:1 for text)
+   - Keyboard navigation
+   - Screen reader support
+   - No keyboard traps
+
+2. ARIA IMPLEMENTATION
+   - Proper ARIA labels
+   - ARIA live regions for dynamic content
+   - ARIA roles for custom widgets
+   - Announce score changes
+   - Announce tree growth
+
+3. SEMANTIC HTML
+   - Proper heading hierarchy
+   - Meaningful link text
+   - Form labels
+   - Button vs. link usage
+   - Landmark regions
+
+4. KEYBOARD SUPPORT
+   - Tab order logical
+   - Focus visible
+   - All interactive elements reachable
+   - Shortcuts don't conflict
+   - Escape to close modals
+
+5. VISUAL CONSIDERATIONS
+   - Text resizable to 200%
+   - No information by color alone
+   - Reduced motion option
+   - High contrast mode support
+   - Focus indicators
+
+Use automated tools (axe, Lighthouse) and manual testing.
+"""
+
+## Final Polish Checklist
+
+"""
+Final polish before submission:
+
+CODE:
+- [ ] Remove all console.log statements
+- [ ] Remove commented-out code
+- [ ] Add comprehensive comments
+- [ ] Format code consistently
+- [ ] Update version numbers
+- [ ] Add copyright/license info
+
+CONTENT:
+- [ ] Proofread all text for typos
+- [ ] Verify all facts are accurate
+- [ ] Check for placeholder text
+- [ ] Ensure consistent terminology
+- [ ] All images have alt text
+
+TESTING:
+- [ ] Complete bug testing checklist
+- [ ] Test on multiple browsers
+- [ ] Test on different screen sizes
+- [ ] Get user feedback from test players
+- [ ] Fix all critical bugs
+
+DOCUMENTATION:
+- [ ] README is complete and accurate
+- [ ] Project report finished
+- [ ] Demo video recorded
+- [ ] Screenshots captured
+- [ ] All prompts documented
+
+DEPLOYMENT:
+- [ ] Test on live server
+- [ ] Verify all assets load
+- [ ] Check mobile version
+- [ ] Test from different networks
+- [ ] Confirm GitHub repo is public/accessible
+
+SUBMISSION:
+- [ ] All required files present
+- [ ] Folder structure correct
+- [ ] File naming conventions followed
+- [ ] YouTube link works
+- [ ] Repository link works
+
+Everything ready for submission!
+"""

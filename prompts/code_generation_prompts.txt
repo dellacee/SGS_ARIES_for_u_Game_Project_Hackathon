@@ -1,0 +1,282 @@
+# CODE GENERATION PROMPTS
+# Used for generating game logic and UI code
+
+## Main HTML Structure Prompt
+
+"""
+Create an HTML5 structure for a web-based educational game called "GreenGrow: Journey of the Green Seed". Requirements:
+
+- Semantic HTML5 elements
+- Multiple screen sections: welcome screen, game menu, quiz game, trash sorting game, results screen
+- Canvas element for trash sorting game
+- Tree visualization area showing growth progress
+- Points display showing current Green Points
+- Responsive layout that works on desktop and tablet
+- Include meta tags for proper character encoding and viewport
+- Link to external CSS (css/style.css) and JavaScript files (js/main.js, js/quiz_game.js, js/trash_sorting_game.js)
+- Use data-screen attributes for easy screen switching
+- Accessibility features (alt text, aria labels)
+
+The HTML should have a clean, semantic structure that's easy to style and manipulate with JavaScript.
+"""
+
+## CSS Styling Prompt
+
+"""
+Create comprehensive CSS for an environmental education game with these requirements:
+
+DESIGN SYSTEM:
+- Color palette: Earth tones (greens, browns, blues)
+- Primary: #4CAF50 (green), Secondary: #8B4513 (brown)
+- Accent: #FFA500 (orange), Background: #E8F5E9 (light green)
+- Typography: Clean, readable sans-serif fonts
+- Rounded, friendly UI elements
+
+COMPONENTS TO STYLE:
+1. Welcome screen with title and start button
+2. Game menu with two game option buttons
+3. Quiz interface with question display and answer buttons
+4. Trash sorting game canvas and bin controls
+5. Tree visualization showing 5 growth stages
+6. Points display badge
+7. Progress indicators
+8. Responsive buttons with hover effects
+9. Modal dialogs for feedback
+10. Transitions between screens
+
+RESPONSIVE DESIGN:
+- Desktop: 1200px+ (primary target)
+- Tablet: 768px - 1199px
+- Mobile: Basic support, may suggest desktop use
+
+ANIMATIONS:
+- Smooth transitions between screens (fade in/out)
+- Button hover effects (scale, shadow)
+- Tree growth animations
+- Point increment animations
+
+Use CSS Grid and Flexbox for layouts. Include CSS custom properties for easy theming.
+"""
+
+## Main JavaScript Controller Prompt
+
+"""
+Create a main.js file that controls the overall game flow and state management:
+
+FEATURES:
+1. Game State Management
+   - Track current screen (welcome, menu, quiz, sorting, results)
+   - Track Green Points (starts at 0)
+   - Track tree growth stage (1-5)
+   - Save/load progress to localStorage
+
+2. Screen Navigation
+   - Function to switch between screens
+   - Show/hide appropriate UI elements
+   - Smooth transitions
+
+3. Tree Growth System
+   - Update tree visual based on points
+   - Stage thresholds: 0-20, 21-50, 51-100, 101-150, 151+
+   - Animate growth transitions
+   - Display current stage name
+
+4. Points System
+   - Add/subtract points
+   - Update UI display
+   - Trigger tree growth checks
+   - Visual feedback for point changes
+
+5. Game Initialization
+   - Set up event listeners
+   - Initialize sub-games (quiz and sorting)
+   - Load saved progress if available
+   - Display welcome screen
+
+6. Utility Functions
+   - playSound(soundName)
+   - showMessage(text, type)
+   - updateProgressBar()
+   - resetGame()
+
+Use ES6+ features, modular code structure, and clear comments.
+"""
+
+## Quiz Game JavaScript Prompt
+
+"""
+Create quiz_game.js for the environmental quiz mini-game:
+
+FEATURES:
+1. Question Database
+   - Array of at least 20 questions about:
+     * UN Sustainable Development Goals (SDG 12, 13, 15)
+     * Recycling and waste management
+     * Climate change and pollution
+     * Environmental conservation
+   - Each question has:
+     * Question text
+     * 4 multiple choice answers
+     * Correct answer index
+     * Explanation/educational feedback
+
+2. Quiz Game Logic
+   - Randomly select questions
+   - Display question and answers
+   - Handle answer selection
+   - Check if answer is correct
+   - Award +10 points for correct, 0 for incorrect
+   - Show feedback with explanation
+   - Track score for the current quiz round
+   - Show results after 5-10 questions
+
+3. UI Management
+   - Display current question number
+   - Show time limit per question (optional)
+   - Highlight selected answer
+   - Show correct/incorrect feedback
+   - Display educational explanations
+   - Show quiz summary at end
+
+4. Integration with Main Game
+   - Call main.addPoints() when correct
+   - Return to game menu after quiz ends
+   - Trigger tree growth check
+
+Use clear variable names and add educational value through good explanations.
+"""
+
+## Trash Sorting Game JavaScript Prompt
+
+"""
+Create trash_sorting_game.js for the falling trash sorting mini-game:
+
+FEATURES:
+1. Game Canvas Setup
+   - Initialize HTML5 Canvas
+   - Set canvas dimensions
+   - Define game area boundaries
+
+2. Trash Items
+   - Array of trash item objects with:
+     * Name (e.g., "plastic bottle")
+     * Type (recyclable, organic, residual, hazardous)
+     * Correct bin color
+     * Image/visual representation
+   - Spawn items randomly from top of canvas
+   - Items fall at consistent speed
+   - Random horizontal positions
+
+3. Bins
+   - Four bins at bottom of canvas
+   - Colors: Green (recyclable), Brown (organic), Grey (residual), Red (hazardous)
+   - Player can move bins left/right using arrow keys or mouse
+   - Collision detection with falling items
+
+4. Game Mechanics
+   - Items fall continuously
+   - Player moves bin to catch items
+   - Check if item matches bin type
+   - Award +5 points for correct catch
+   - Deduct -3 points for wrong catch
+   - Show immediate feedback (correct/wrong)
+   - Game duration: 60 seconds
+   - Track correct vs. incorrect sorts
+
+5. Controls
+   - Keyboard: Arrow keys or A/D to move bins
+   - Mouse/Touch: Click/tap to move bins
+   - Smooth movement
+
+6. Difficulty Scaling
+   - Items fall faster as score increases (optional)
+   - More items spawn over time (optional)
+
+7. Game Loop
+   - requestAnimationFrame for smooth animation
+   - Update item positions
+   - Check collisions
+   - Render graphics
+   - Update score display
+
+8. Integration
+   - Call main.addPoints() or subtractPoints()
+   - Return to menu when time ends
+   - Show game summary (correct/incorrect counts)
+
+Use object-oriented approach with classes for TrashItem and Bin.
+"""
+
+## Responsive Design Code Prompt
+
+"""
+Create JavaScript code to handle responsive behavior:
+
+- Detect screen size changes
+- Adjust canvas dimensions
+- Scale UI elements appropriately
+- Disable/modify games for very small screens
+- Show orientation change message on mobile if needed
+- Adapt touch vs. mouse controls
+
+Include media query listeners and dynamic UI adjustments.
+"""
+
+## Local Storage Integration Prompt
+
+"""
+Create functions for saving and loading game progress:
+
+SAVE DATA:
+- Total Green Points
+- Tree growth stage
+- Best quiz score
+- Best sorting score
+- Total games played
+- Timestamp of last play
+
+FUNCTIONS:
+- saveProgress()
+- loadProgress()
+- resetProgress()
+- getHighScores()
+
+Use JSON.stringify/parse for localStorage. Handle errors gracefully if localStorage is not available.
+"""
+
+## Accessibility Features Prompt
+
+"""
+Add accessibility features to the game:
+
+- Keyboard navigation for all interactive elements
+- Tab order makes logical sense
+- ARIA labels for screen readers
+- Focus indicators clearly visible
+- Color blind friendly color choices
+- Option to reduce animations
+- Text contrast meets WCAG AA standards
+- Alternative text for all images
+- Semantic HTML structure
+
+Include JavaScript to manage focus states and keyboard shortcuts.
+"""
+
+## Performance Optimization Prompt
+
+"""
+Optimize game performance:
+
+- Debounce resize handlers
+- Throttle animation frame updates
+- Preload all images and sounds
+- Use sprite sheets if multiple images
+- Minimize DOM manipulation
+- Use event delegation
+- Cache DOM queries
+- Lazy load non-critical assets
+- Remove event listeners when not needed
+- Efficient collision detection algorithms
+
+Keep the game running smoothly at 60fps.
+"""
