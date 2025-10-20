@@ -1,103 +1,321 @@
+# ===============================================
 # ASSET GENERATION PROMPTS
-# Used for creating visual and audio assets using AI tools
+# GreenGrow: Journey of the Green Seed
+# Used for creating visual and audio assets
+# ===============================================
 
-## Tree Growth Stages - Image Generation
+## VISUAL STYLE GUIDE
 
+### Overall Art Direction
 """
-STYLE: Cute, friendly, cartoon illustration style with soft colors and clean lines. Suitable for educational games.
+STYLE: Pixel art / retro gaming aesthetic
+- 8-bit to 16-bit inspired visuals
+- Crisp pixels, no anti-aliasing
+- Limited color palette for authentic retro feel
+- Clean, readable at small sizes
+- Nostalgic yet modern approach
+- Press Start 2P font for all text
 
-Generate 5 variations of a tree in different growth stages:
+RENDERING:
+- image-rendering: pixelated
+- No blur or smooth gradients
+- Hard edges and solid colors
+- Box shadows instead of gradients for depth
+"""
 
-1. SEED STAGE
-"A small brown seed planted in dark soil, with a tiny green shoot just beginning to emerge. Simple, hopeful composition. Cartoon style, warm earth tones, white background."
+## Phase 1: Tree Growth Stages (Pixel Art)
 
-2. SPROUT STAGE
-"A young plant sprout with 2-3 bright green leaves emerging from soil. Delicate stem, fresh growth. Cartoon style, vibrant green, white background."
+### Tree Sprites - Image Generation
+"""
+STYLE: Pixel art, 16-bit style, clean pixels, no anti-aliasing
 
-3. SAPLING STAGE
-"A young tree sapling with a thin trunk and several branches with leaves. About 1/3 grown. Cartoon style, healthy green foliage, white background."
+Generate 5 variations of a tree in different growth stages (each 512x512px, PNG transparent):
 
-4. YOUNG TREE STAGE
-"A growing tree with a stronger trunk, multiple branches, and full green canopy. About 2/3 grown. Cartoon style, lush appearance, white background."
+1. SEED STAGE (0-20 points)
 
-5. BLOSSOMING TREE STAGE
-"A mature, beautiful tree with thick trunk, full canopy, and colorful flowers or fruit. Fully grown and thriving. Cartoon style, vibrant colors, celebratory feel, white background."
+"Pixel art seed in soil, tiny green shoot emerging, 16-bit style, brown soil, small sprite, transparent background, crisp pixels"
+File: seed.png
+
+2. SPROUT STAGE (21-50 points)
+"Pixel art plant sprout, 2-3 pixelated leaves, simple stem, 16-bit retro game style, bright green, transparent background"
+File: sprout.png
+
+3. SAPLING STAGE (51-100 points)
+"Pixel art young tree sapling, thin pixelated trunk, small branches with leaves, 16-bit style, healthy green, transparent background"
+File: sapling.png
+
+4. GROWING TREE STAGE (101-150 points)
+"Pixel art medium tree, stronger trunk, multiple branches, fuller canopy, 16-bit game style, lush green pixels, transparent background"
+File: growing_tree.png
+
+5. BLOSSOMING TREE STAGE (151+ points)
+"Pixel art mature tree, thick trunk, full canopy with flowers, 16-bit retro style, vibrant colors, celebratory, transparent background"
+File: blossoming_tree.png
 
 SIZE: 512x512px, PNG with transparent background
+COLOR PALETTE: Limited colors for authentic pixel art feel
 """
 
-## Waste Item Icons - Image Generation
+## Phase 2: Waste Item Sprites (Pixel Art)
 
+### Trash Item Icons - Image Generation
 """
-STYLE: Simple, recognizable icons in flat design style with slight 3D effect
+STYLE: Pixel art icons, 16-bit retro game style, recognizable shapes
 
-Generate icons for common waste items (128x128px each, PNG):
+Generate icons for common waste items (128x128px each, PNG transparent):
 
-RECYCLABLE (Green Bin):
-- "Plastic water bottle icon, clear blue, flat design"
-- "Aluminum soda can icon, silver/metallic, flat design"
-- "Folded newspaper icon, flat design"
-- "Cardboard box icon, brown, flat design"
-- "Glass bottle icon, transparent green, flat design"
+RECYCLABLE (Green Bin Type 0):
+- "Pixel art plastic water bottle, blue and clear, 16-bit style, simple sprite"
+- "Pixel art aluminum soda can, silver metallic, 16-bit retro game style"
+- "Pixel art newspaper, folded, black text lines, 16-bit style"
+- "Pixel art cardboard box, brown, 16-bit game sprite"
+- "Pixel art glass bottle, transparent green, 16-bit retro style"
+- "Pixel art tin can, silver, 16-bit pixel sprite"
 
-ORGANIC (Brown Bin):
-- "Apple core icon, brown and red, flat design"
-- "Banana peel icon, yellow with brown spots, flat design"
-- "Green leaves icon, flat design"
-- "Food scraps icon, flat design"
-- "Eggshells icon, white, flat design"
+ORGANIC (Brown Bin Type 1):
+- "Pixel art apple core, brown and red, 16-bit style, small sprite"
+- "Pixel art banana peel, yellow with brown, 16-bit retro game style"
+- "Pixel art green leaves, pixelated, 16-bit style"
+- "Pixel art food scraps, mixed colors, 16-bit game sprite"
+- "Pixel art eggshells, white and broken, 16-bit pixel art"
+- "Pixel art orange peel, orange, 16-bit retro style"
 
-RESIDUAL (Grey Bin):
-- "Broken ceramic mug icon, grey, flat design"
-- "Disposable diaper icon, flat design"
-- "Styrofoam packaging icon, white, flat design"
-- "Candy wrapper icon, colorful, flat design"
+RESIDUAL (Grey Bin Type 2):
+- "Pixel art broken ceramic, grey shards, 16-bit style"
+- "Pixel art disposable diaper, white, 16-bit game sprite"
+- "Pixel art styrofoam, white puffy, 16-bit pixel art"
+- "Pixel art candy wrapper, colorful crinkled, 16-bit retro"
+- "Pixel art plastic bag, grey, 16-bit style"
+- "Pixel art straw, red and white, 16-bit pixel sprite"
 
-HAZARDOUS (Red Bin):
-- "AA battery icon, black and gold, flat design"
-- "Spray paint can icon with warning symbol, flat design"
-- "Broken light bulb icon, flat design"
-- "Old phone icon, flat design"
-"""
+HAZARDOUS (Red Bin Type 3):
+- "Pixel art AA battery, black and gold, 16-bit retro game style"
+- "Pixel art spray paint can, warning symbol, 16-bit pixel art"
+- "Pixel art broken light bulb, glass shards, 16-bit style"
+- "Pixel art old mobile phone, grey, 16-bit game sprite"
+- "Pixel art chemical bottle, red warning, 16-bit retro style"
 
-## Bin Graphics - Image Generation
-
-"""
-Generate 4 waste bins in cartoon style, viewed from front angle:
-
-1. GREEN RECYCLING BIN
-"A bright green waste bin with white recycling symbol (three arrows in triangle). Cartoon style, friendly appearance, slight 3D effect. 256x256px PNG."
-
-2. BROWN ORGANIC BIN
-"A brown waste bin with white leaf/compost symbol. Cartoon style, friendly appearance, slight 3D effect. 256x256px PNG."
-
-3. GREY RESIDUAL BIN
-"A grey/black waste bin with white general waste symbol. Cartoon style, friendly appearance, slight 3D effect. 256x256px PNG."
-
-4. RED HAZARDOUS BIN
-"A red waste bin with white hazard symbol (exclamation mark or warning triangle). Cartoon style, friendly appearance, slight 3D effect. 256x256px PNG."
-
-All bins should have consistent style and proportions.
+SIZE: 128x128px recommended, scalable
+FORMAT: PNG with transparent background
 """
 
-## Background Graphics
+## Phase 3: Waste Bin Sprites (Pixel Art)
 
+### Bin Graphics - Image Generation
 """
-GAME BACKGROUND:
-"A peaceful outdoor scene with blue sky, fluffy clouds, green grass field, and small hills in the distance. Cartoon style, cheerful colors, suitable for educational game. 1920x1080px."
+STYLE: Pixel art bins, 16-bit retro game style, front-facing view
 
-MENU BACKGROUND:
-"Soft gradient background with nature theme - light green to blue, with subtle leaf silhouettes. Clean, modern, suitable for game menu. 1920x1080px."
+Generate 4 waste bins in pixel art style (256x256px each, PNG transparent):
+
+1. GREEN RECYCLING BIN (Type 0)
+"Pixel art bright green waste bin, white pixelated recycling symbol (♻️), 16-bit retro game style, front view, rectangular shape, crisp pixels"
+File: bin_green.png
+
+2. BROWN ORGANIC BIN (Type 1)
+"Pixel art brown waste bin, white pixelated leaf/compost symbol (🍂), 16-bit retro game style, front view, rectangular shape, crisp pixels"
+File: bin_brown.png
+
+3. GREY RESIDUAL BIN (Type 2)
+"Pixel art grey/black waste bin, white pixelated general waste symbol, 16-bit retro game style, front view, rectangular shape, crisp pixels"
+File: bin_grey.png
+
+4. RED HAZARDOUS BIN (Type 3)
+"Pixel art red waste bin, white pixelated hazard warning symbol (⚠️), 16-bit retro game style, front view, rectangular shape, crisp pixels"
+File: bin_red.png
+
+All bins should have:
+- Consistent proportions and style
+- Simple, recognizable shapes
+- Clear symbols visible even at small sizes
+- Transparent background
+- No anti-aliasing or smooth gradients
 """
 
-## UI Elements
+## Phase 4: Background Graphics (Pixel Art)
 
+### Main Backgrounds - Image Generation
 """
-Generate UI buttons and elements in friendly, rounded style:
+STYLE: Pixel art backgrounds, 16-bit retro game style, tileable
 
-BUTTONS:
-- "Start button - rounded rectangle, green gradient, white text 'START', slight shadow"
-- "Play Quiz button - blue gradient, white text"
+1. WELCOME SCREEN BACKGROUND (background_greengrow.png)
+"Pixel art outdoor scene, blue sky, pixelated clouds, green grass field, small pixel hills, 16-bit retro game style, bright cheerful colors, 1920x1080px with 'GreenGrow' text integrated"
+File: background_greengrow.png
+Used on: index.html (welcome page)
+
+2. GAME PAGES BACKGROUND (backgorund_noleter.png) [Note: Original filename had typo]
+"Pixel art outdoor scene, blue sky, pixelated fluffy clouds, green grass meadow, pixel art hills in distance, 16-bit retro game style, NO TEXT, clean background for gameplay, 1920x1080px"
+File: backgorund_noleter.png
+Used on: menu.html, quiz.html, sorting.html, results.html
+
+3. ALTERNATIVE/GENERIC BACKGROUND (background.png)
+"Pixel art nature scene, simple sky and grass, 16-bit retro style, clean and minimal, suitable for any page, 1920x1080px"
+File: background.png
+Used as: Fallback/default
+
+SPECIFICATIONS:
+- Resolution: 1920x1080px minimum
+- Format: PNG
+- Style: Pixel art, crisp edges, no blur
+- Should tile seamlessly if needed
+- Keep visual noise low for text readability
+"""
+
+## Phase 5: UI Elements (Not Used - CSS-based UI)
+
+### UI Design Direction
+"""
+NOTE: Final implementation uses CSS-styled buttons instead of image buttons.
+
+BUTTON STYLE:
+- Pixel art aesthetic using CSS
+- Press Start 2P font for retro feel
+- Box shadows instead of gradients
+- No rounded corners (border-radius: 0)
+- Solid colors with pixel-perfect borders
+- Emoji icons for visual interest
+
+EXAMPLE BUTTON CLASSES:
+- .btn-primary: Green background, white text
+- .btn-secondary: Blue background, white text
+- .btn-game: Larger game selection buttons
+- .btn-small: Compact utility buttons
+- .btn-home: Navigation buttons
+
+All styled via CSS for flexibility and scalability
+"""
+
+## Phase 6: Audio Assets (8-bit/Chiptune Style)
+
+### Sound Effect Generation Prompts
+"""
+STYLE: 8-bit/chiptune retro game sounds, pixel art game aesthetic
+
+TOOLS RECOMMENDED:
+- Bfxr (bfxr.net) - Browser-based 8-bit sound generator
+- ChipTone (sfbgames.itch.io/chiptone) - Retro audio maker
+- Beepbox (beepbox.co) - Chiptune music creator
+
+### UI SOUNDS (Short, crisp):
+
+1. button_click.mp3
+"8-bit blip sound, short click, 0.2-0.3 seconds, satisfying retro game button press"
+Bfxr preset: "Blip/Select"
+Use: All button clicks throughout game
+
+2. notification.mp3
+"Chiptune notification bell, gentle chime, 0.5-1 second, positive tone"
+Bfxr preset: "Pickup/Coin" (lower pitch)
+Use: Pop-up notifications, modal opens
+
+### QUIZ GAME SOUNDS:
+
+3. correct_answer.mp3
+"8-bit success jingle, cheerful ascending notes, 0.5-0.8 seconds, celebratory"
+Bfxr preset: "Pickup/Coin"
+Use: Correct quiz answer selected
+
+4. wrong_answer.mp3
+"Chiptune buzzer, descending tone, 0.5-0.8 seconds, gentle error sound"
+Bfxr preset: "Hit/Hurt" (soft)
+Use: Wrong quiz answer selected
+
+5. quiz_complete.mp3
+"8-bit victory fanfare, triumphant melody, 2-3 seconds, celebratory"
+Bfxr preset: "Powerup" (extended)
+Use: Quiz successfully completed
+
+### SORTING GAME SOUNDS:
+
+6. item_spawn.mp3
+"Soft 8-bit whoosh/pop, quick appearance sound, 0.3-0.5 seconds"
+Bfxr preset: "Jump" (soft)
+Use: Each time trash item spawns
+
+7. item_catch_correct.mp3
+"Chiptune positive chime, bright bell tone, 0.5-0.8 seconds"
+Bfxr preset: "Pickup/Coin"
+Use: Correct bin sorting
+
+8. item_catch_wrong.mp3
+"8-bit error buzz, clunk sound, 0.5-0.8 seconds"
+Bfxr preset: "Hit/Hurt"
+Use: Wrong bin sorting
+
+9. item_missed.mp3
+"Subtle 8-bit miss sound, descending whoosh, 0.3-0.5 seconds"
+Bfxr preset: "Jump" (reversed, lower)
+Use: Item falls off screen (optional)
+
+10. game_over.mp3
+"Chiptune game end jingle, conclusive melody, 1-2 seconds"
+Bfxr preset: Custom melody
+Use: Sorting game ends
+
+### ACHIEVEMENT SOUNDS:
+
+11. tree_grow.mp3
+"8-bit magical sparkle, ascending glitter sound, 1-1.5 seconds"
+Bfxr preset: "Powerup"
+Use: Tree levels up
+
+12. achievement.mp3
+"Chiptune celebratory fanfare, triumphant, 1.5-2 seconds"
+Bfxr preset: "Powerup" (extended)
+Use: New tree stage reached
+
+### BACKGROUND MUSIC (Loopable):
+
+13. music_menu.mp3
+"Calm chiptune melody, peaceful nature theme, 60-90 seconds, seamlessly loopable"
+Style: Slow tempo (80-100 BPM), major key, gentle, relaxing
+Instruments: Triangle wave lead, square bass, simple drums
+Use: Welcome screen and menu
+
+14. music_gameplay.mp3
+"Upbeat chiptune melody, energetic but not stressful, 60-90 seconds, loopable"
+Style: Medium tempo (120-140 BPM), major key, motivating
+Instruments: Square lead, triangle bass, 8-bit drums
+Use: Quiz and sorting games
+
+15. music_victory.mp3
+"Triumphant chiptune celebration, victory theme, 20-30 seconds, non-looping"
+Style: Fast tempo (150-160 BPM), major key, celebratory
+Instruments: Full chiptune orchestra, energetic
+Use: Results screen
+
+SPECIFICATIONS:
+- Format: MP3 (128-192 kbps)
+- Sample Rate: 44.1 kHz
+- Volume: Normalized, not clipping
+- Style: Authentic 8-bit/chiptune (square waves, triangle waves, noise)
+- No reverb or modern effects
+- Clean, crisp, retro gaming feel
+"""
+
+### Audio Resources and References
+"""
+FREE SOUND RESOURCES:
+1. Freesound.org - Search "8-bit", "chiptune", "pixel"
+2. OpenGameArt.org - Retro game audio assets
+3. Zapsplat.com - Game sound effects (free tier)
+4. Mixkit.co - Free video game sounds
+
+SOUND GENERATION TOOLS:
+1. Bfxr (bfxr.net) - Best for SFX, one-click presets
+2. ChipTone (sfbgames.itch.io/chiptone) - Advanced SFX control
+3. Beepbox (beepbox.co) - Music composition
+4. LMMS (lmms.io) - Full DAW with chiptune plugins
+
+EXAMPLE WORKFLOWS:
+- Quick SFX: Use Bfxr presets, export WAV, convert to MP3
+- Custom music: Use Beepbox, compose 8-16 bar loop, export
+- Professional: Use LMMS with magical8bitplug or similar VST
+
+COLOR PALETTE FOR REFERENCE:
+- Matches game visual style
+- Nostalgic 8-bit/16-bit era (NES, SNES, Game Boy)
+- Simple waveforms, limited channels
+- Authentic retro gaming experience
 - "Play Sorting Game button - orange gradient, white text"
 - "Pause button - circular, yellow, pause icon"
 - "Home button - circular, grey, house icon"

@@ -1,8 +1,12 @@
+# ===============================================
 # CONCEPT GENERATION PROMPTS
+# GreenGrow: Journey of the Green Seed
 # Used for brainstorming and ideation phase
+# ===============================================
 
-## Initial Game Concept Prompt
+## Phase 1: Initial Game Concept (October 2025)
 
+### Main Concept Prompt
 """
 Create a web-based educational game concept that teaches players about environmental sustainability and the UN Sustainable Development Goals. The game should:
 - Be engaging and fun for ages 10+
@@ -11,8 +15,22 @@ Create a web-based educational game concept that teaches players about environme
 - Focus on SDG 12 (Responsible Consumption), SDG 13 (Climate Action), and SDG 15 (Life on Land)
 - Be playable in a web browser without plugins
 - Include educational content about recycling and waste management
+- Use HTML5, CSS3, and vanilla JavaScript only
+- Have a pixel art visual style
+- Be mobile-responsive
 
 The game should use a metaphor of growing a tree to represent positive environmental impact.
+"""
+
+### Game Name Brainstorming
+"""
+Generate creative names for an environmental game about growing trees through eco-friendly actions:
+- Should be memorable and appealing to young audiences
+- Should reflect environmental/sustainability themes
+- Should suggest growth or positive change
+- Bonus: Include nature-related words
+
+Final choice: "GreenGrow: Journey of the Green Seed"
 """
 
 ## Tree Growth Metaphor Prompt
@@ -28,56 +46,109 @@ Design a visual progression system where a tree grows from seed to full blossom 
 Each stage should be visually distinct and rewarding. The tree represents the player's positive environmental impact.
 """
 
-## Mini-Game Selection Prompt
+## Phase 4: Mini-Game Selection and Design
 
+### Game Concepts Brainstorming
 """
 Suggest 2-3 mini-game concepts that teach environmental awareness:
 - Games should be simple, browser-based, and require minimal controls
 - Should teach about waste management, recycling, or sustainability
 - Should be appropriate for educational settings
-- One should be knowledge-based, others action-based
+- One should be knowledge-based (quiz), others action-based (arcade)
 - Games should award points that contribute to tree growth
+- Each game should be completable in 2-5 minutes
+- Mobile-friendly controls (touch or keyboard only)
+
+Final selections:
+1. Knowledge Quiz - Multiple choice questions about environment
+2. Trash Sorting Game - Action game with falling items and moving bins
 """
 
-## Color-Coded Waste Bins Concept
+### Quiz Game Design
+"""
+Design a 10-question multiple choice quiz about:
+- SDG 12: Responsible Consumption and Production
+- SDG 13: Climate Action
+- SDG 15: Life on Land
+- Waste management best practices
+- Environmental facts and statistics
+- Real-world sustainability actions
 
+Each question should:
+- Have 4 answer options
+- Include one correct answer
+- Provide educational explanation after answering
+- Award 10 points per correct answer
+- Be age-appropriate and engaging
+"""
+
+### Trash Sorting Game Mechanics
+"""
+Design an action game where:
+- Items fall from the top of the screen
+- Player controls a bin that moves left-right
+- Player must catch items in the correct colored bin
+- Correct catches award +10 points
+- Wrong catches deduct -5 points
+- Game has a time limit (60 seconds)
+- Items spawn continuously until time expires
+- Visual feedback shows correct/wrong catches
+- Score determines if player passes (50+ points)
+"""
+
+## Phase 2: Color-Coded Waste Bins System
+
+### Waste Management Concept
 """
 Design a waste sorting system using international color standards:
-- Green bin: Recyclable waste (plastic, paper, glass, metal)
-- Brown bin: Organic/compostable waste (food scraps, yard waste)
-- Grey/Black bin: General/residual waste (non-recyclables)
-- Red bin: Hazardous waste (batteries, chemicals, electronics)
+- Green bin: Recyclable waste (plastic, paper, glass, metal, aluminum)
+- Brown bin: Organic/compostable waste (food scraps, yard waste, biodegradables)
+- Grey/Black bin: General/residual waste (non-recyclables, mixed materials)
+- Red bin: Hazardous waste (batteries, chemicals, electronics, medical waste)
 
-Create a list of common household items and which bin they belong in. Make it educational and accurate to real-world waste management practices.
+Create a comprehensive list of common household items and which bin they belong in. 
+Make it educational and accurate to real-world waste management practices.
+Include specific examples for each category that students would encounter daily.
 """
 
-## Game Name and Branding Prompt
-
+### Trash Items Database
 """
-Generate creative names for an environmental education game about growing a tree through eco-friendly actions. The name should:
-- Be memorable and positive
-- Reference growth, nature, or sustainability
-- Be appropriate for all ages
-- Work well as a hashtag
-- Suggest hope and positive change
+Generate 20+ common household items with:
+- Item name
+- Emoji representation
+- Correct bin color
+- Brief educational explanation
+- Real-world recycling facts
 
-Consider variations with words like: Green, Grow, Seed, Sprout, Eco, Earth, Life, Journey, Quest
+Items should be recognizable to young audiences and span all four bin categories.
 """
 
-## Target Audience and Learning Objectives
+## Phase 3: Target Audience and Learning Objectives
 
+### Audience Definition
 """
 Define the target audience and learning objectives for an environmental game:
 
 Target Audience:
-- Primary: Students ages 10-16
+- Primary: Students ages 10-16 (middle school)
 - Secondary: General public interested in sustainability
+- Tertiary: Educators looking for environmental teaching tools
 
-Learning Objectives:
-- Understand the UN SDGs related to environment
-- Learn proper waste segregation techniques
-- Recognize different types of waste and their environmental impact
-- Understand the importance of recycling and composting
+Accessibility:
+- Must work on school computers and tablets
+- Should be playable in 5-15 minute sessions
+- No installation or login required
+- Works offline after initial load
+"""
+
+### Learning Objectives
+"""
+Players should be able to:
+1. Identify and sort waste into 4 correct bin categories
+2. Explain why proper waste sorting matters for the environment
+3. Recognize SDG 12, 13, and 15 and their importance
+4. Understand the lifecycle of different waste materials
+5. Apply waste management knowledge to real-world scenarios
 - Develop habits that support environmental sustainability
 - Feel empowered to make eco-friendly choices
 """

@@ -1,10 +1,47 @@
+# ===============================================
 # CODE GENERATION PROMPTS
+# GreenGrow: Journey of the Green Seed
 # Used for generating game logic and UI code
+# ===============================================
 
-## Main HTML Structure Prompt
+## TECHNICAL STACK
 
+### Core Technologies
 """
-Create an HTML5 structure for a web-based educational game called "GreenGrow: Journey of the Green Seed". Requirements:
+- HTML5 (semantic markup, canvas API)
+- CSS3 (Grid, Flexbox, custom properties, pixel-perfect rendering)
+- Vanilla JavaScript (ES6+, no frameworks)
+- Web APIs: Canvas, LocalStorage, Audio
+
+REQUIREMENTS:
+- No external libraries or frameworks (pure vanilla JS)
+- Offline-capable after initial load
+- Works in modern browsers (Chrome, Firefox, Edge, Safari)
+- Progressive enhancement approach
+- Mobile-responsive (desktop-first design)
+"""
+
+## Phase 1: HTML Structure
+
+### Main HTML Architecture Prompt
+"""
+Create an HTML5 structure for a web-based educational game called "GreenGrow: Journey of the Green Seed". 
+
+ARCHITECTURE:
+- Multi-page application (separate HTML files for each screen)
+- index.html: Welcome/landing page
+- menu.html: Game selection with tree display
+- quiz.html: Quiz game interface
+- sorting.html: Trash sorting game with canvas
+- results.html: Results and feedback screen
+
+COMMON ELEMENTS (across all pages):
+- Semantic HTML5 elements
+- Meta tags: charset UTF-8, viewport for responsive design
+- External CSS: css/style.css
+- Common JavaScript: js/common.js
+- Google Fonts: Press Start 2P (pixel art font)
+- Accessibility: ARIA labels, alt text, semantic markup
 
 - Semantic HTML5 elements
 - Multiple screen sections: welcome screen, game menu, quiz game, trash sorting game, results screen
