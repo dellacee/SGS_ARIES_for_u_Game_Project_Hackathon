@@ -32,14 +32,6 @@ Or **simply download** and double-click `game_app/index.html` - No installation 
   - **Trash Sorting Game** - Action-packed sorting game with continuous item spawning
 - **🌳 Tree Growth System:** Watch your virtual tree grow through 5 distinct stages as you earn Green Points
 
-- **🎨 Pixel Art Aesthetic:** Retro 16-bit style visuals with Press Start 2P font
-
-- **🔊 Full Sound System:** 8-bit/chiptune audio with background music and sound effects
-
-- **💾 Progress Tracking:** LocalStorage saves your points and tree growth automatically
-
-- **📱 Responsive Design:** Works on desktop, tablet, and mobile devices
-
 ### 🎓 Educational Value
 
 Players learn about:
@@ -103,63 +95,6 @@ Players learn about:
 
 ## 📁 Project Structure
 
-```
-SGS_ARIES_for_u_Game_Project_Hackathon/
-│
-├── 📄 README.md                           # Project documentation (this file)
-├── 📄 project_report.pdf                  # Comprehensive project report
-├── 📄 youtube_link.txt                    # Demo video link
-├── 📄 SOUND_INTEGRATION_SUMMARY.md        # Audio system documentation
-│
-├── 📁 prompts/                            # AI generation prompts
-│   ├── concept_prompts.txt               # Game concept and design
-│   ├── asset_generation_prompts.txt      # Visual and audio assets
-│   ├── code_generation_prompts.txt       # Code structure and logic
-│   ├── refinement_prompts.txt            # Improvements and debugging
-│   └── ALL_PROMPTS_SUMMARY.md            # Complete prompt documentation
-│
-├── 📁 game_app/                           # ⭐ PLAYABLE WEB GAME ⭐
-│   │
-│   ├── index.html                        # Welcome/landing page
-│   ├── menu.html                         # Game selection menu
-│   ├── quiz.html                         # Environmental quiz game
-│   ├── sorting.html                      # Trash sorting game
-│   ├── results.html                      # Results screen
-│   │
-│   ├── 📁 css/
-│   │   └── style.css                     # Complete game styling (2200+ lines)
-│   │
-│   ├── 📁 js/
-│   │   ├── common.js                     # Shared utilities & GameController
-│   │   ├── quiz_game.js                  # Quiz game logic
-│   │   ├── trash_sorting_game.js         # Sorting game engine
-│   │   └── sound_manager.js              # Audio system
-│   │
-│   └── 📁 assets/
-│       ├── 📁 images/                    # Game graphics (pixel art)
-│       │   ├── background_greengrow.png
-│       │   ├── backgorund_noleter.png
-│       │   ├── seed.png
-│       │   ├── sprout.png
-│       │   ├── sapling.png
-│       │   ├── growing_tree.png
-│       │   ├── blossoming_tree.png
-│       │   └── ... (trash items, bins, etc.)
-│       │
-│       ├── 📁 sounds/                    # Audio files (15 files)
-│       │   ├── button_click.mp3
-│       │   ├── correct_answer.mp3
-│       │   ├── wrong_answer.mp3
-│       │   ├── item_catch_correct.mp3
-│       │   ├── music_menu.mp3
-│       │   └── ... (8-bit/chiptune style)
-│       │
-│       └── 📁 fonts/                     # Custom fonts (if any)
-│
-└── 📁 screenshots/                        # Game screenshots
-    └── README.md                          # Screenshots info
-```
-
 ### Key Files Explanation
 
 | File/Folder              | Purpose                            |
@@ -184,29 +119,12 @@ Watch the full gameplay walkthrough on YouTube:
 
 ### 📸 Screenshots
 
-View game screenshots in the `screenshots/` folder:
-
-1. Welcome Screen
-2. Menu with Tree Display
-3. Environmental Quiz
-4. Trash Sorting Game
-5. Results Screen
+View game screenshots in the `screenshots/` folder
 
 ### 📄 Full Documentation
 
 For detailed project analysis, see `project_report.pdf`
 
----
-
-## 🤝 Contributing
-
-This project is part of a hackathon submission. If you'd like to contribute:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 ---
 
 ## 🌍 Impact Statement
@@ -230,27 +148,6 @@ By gamifying environmental education, **GreenGrow** transforms abstract concepts
 - Fun learning experience = long-term retention
 
 **"Small actions today grow into a greener tomorrow."** 🌳
-
----
-
-## ⭐ Quick Start Summary
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/dellacee/SGS_ARIES_for_u_Game_Project_Hackathon.git
-
-# 2. Navigate to game folder
-cd SGS_ARIES_for_u_Game_Project_Hackathon/game_app
-
-# 3. Open index.html in your browser (or use Live Server in VS Code)
-```
-
-**Then:**
-
-1. Click "Begin Your Mission" on welcome screen
-2. Choose a mini-game from the menu
-3. Play and earn Green Points
-4. Watch your tree grow!
 
 ---
 
